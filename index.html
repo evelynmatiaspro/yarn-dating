@@ -57,16 +57,16 @@
   @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
   /* ========================================================
-     EXTENDED CINEMATIC INTRO: Y ZOOM-IN -> REVEAL -> Y MASSIVE ENGULF ZOOM
+     EXTENDED CINEMATIC INTRO WITH ADJUSTED TIMINGS
      ======================================================== */
   #splash{
     position:fixed;inset:0;z-index:999;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:#FAF5ED;
     overflow:hidden;cursor:pointer;
-    perspective:900px;
-    /* Total intro runtime: ~4.2s */
-    animation:splashOut 0.75s ease 4.15s forwards;
+    perspective:1000px;
+    /* Total splash duration set to ~5.5s */
+    animation:splashOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) 5.3s forwards;
   }
   #splash.out{opacity:0;visibility:hidden;pointer-events:none}
   @keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
@@ -127,7 +127,7 @@
     transform-style:preserve-3d;
   }
 
-  /* 1. THE "Y" MONOGRAM: Zoom-in from outside -> hold -> MASSIVE screen-engulfing zoom */
+  /* 1. THE "Y" MONOGRAM: Displays first -> Holds while ARN shows -> MASSIVE BLURRED ZOOM-OUT TOWARDS CAMERA */
   .y-char{
     display:inline-block;
     background:var(--spectrum);
@@ -137,48 +137,44 @@
     color:transparent;
     filter:drop-shadow(0 4px 22px rgba(255,90,0,0.45));
     will-change:transform, opacity, filter;
-    animation:yEpicJourney 4.2s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+    animation:yEpicJourney 5.5s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
   }
 
   @keyframes yEpicJourney{
-    /* Step 1: Enters from far outside the screen */
     0%{
-      transform:scale(0.04) translateZ(-800px);
+      transform:scale(0.04) translateZ(-600px);
       opacity:0;
+      filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45));
     }
-    18%{
-      /* Lands with punchy, deliberate elasticity */
-      transform:scale(1.18) translateZ(0);
+    16%{
+      transform:scale(1.15) translateZ(0);
       opacity:1;
     }
-    24%{
+    22%{
       transform:scale(1) translateZ(0);
       opacity:1;
     }
-    /* Step 2: Comfortable hold while ARN & Tagline are showcased */
-    58%{
+    /* Holds steady while ARN enters and stays visible */
+    70%{
       transform:scale(1) translateZ(0);
       opacity:1;
-      filter:drop-shadow(0 4px 22px rgba(255,90,0,0.45));
+      filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45));
     }
-    /* Step 3: ARN and Tagline are gone, Y pauses in suspense */
-    68%{
-      transform:scale(0.92) translateZ(-35px);
+    78%{
+      /* Slight subtle pullback pre-bounce before screen burst */
+      transform:scale(0.9) translateZ(-40px);
       opacity:1;
+      filter:blur(0px);
     }
-    75%{
-      transform:scale(1.05) translateZ(20px);
-      opacity:1;
-    }
-    /* Step 4: EXAGGERATED MASSIVE ZOOM — Completely engulfs and fills the phone screen */
+    /* Sudden camera burst - zooms towards screen and blurs out */
     100%{
-      transform:scale(48) translateZ(1400px);
+      transform:scale(60) translateZ(1800px);
       opacity:0;
-      filter:blur(14px) drop-shadow(0 0 160px rgba(255,42,122,1));
+      filter:blur(22px) drop-shadow(0 0 180px rgba(255,90,0,1));
     }
   }
 
-  /* 2. "ARN" LETTERS: Enters after Y arrives, holds, then DISAPPEARS first */
+  /* 2. "ARN" LETTERS: Enters gently after Y, stays comfortably readable, then fades out before Y zooms */
   .arn-chars{
     display:inline-block;
     background:var(--spectrum);
@@ -190,35 +186,36 @@
     opacity:0;
     overflow:hidden;
     white-space:nowrap;
-    animation:arnSlideAndDismiss 4.2s cubic-bezier(0.25, 1, 0.3, 1) forwards;
+    animation:arnSlideAndDismiss 5.5s cubic-bezier(0.25, 1, 0.3, 1) forwards;
   }
 
   @keyframes arnSlideAndDismiss{
-    0%, 24%{
+    0%, 20%{
       opacity:0;
-      transform:translateX(-25px);
+      transform:translateX(-20px);
       max-width:0;
     }
-    34%{
-      /* Slides out smoothly to complete YARN */
+    35%{
+      /* Smooth, relaxed entrance */
       opacity:1;
       transform:translateX(0);
-      max-width:350px;
+      max-width:380px;
     }
-    54%{
-      /* Stays comfortably readable */
+    68%{
+      /* Extended reading window */
       opacity:1;
       transform:translateX(0);
+      max-width:380px;
     }
-    /* Step 3: Dissolves away BEFORE the Y zooms out */
-    64%, 100%{
+    76%, 100%{
+      /* Dissolves smoothly away before the Y zooms */
       opacity:0;
-      transform:translateX(22px);
+      transform:translateX(20px);
       max-width:0;
     }
   }
 
-  /* 3. TAGLINE: Fades in beneath YARN, then DISAPPEARS with ARN */
+  /* 3. TAGLINE: Fades in with ARN and dissolves gracefully with ARN */
   .tagline-anim{
     font-family:var(--sans);
     font-size:clamp(0.9rem, 2.8vw, 1.25rem);
@@ -229,24 +226,19 @@
     margin-top:16px;
     padding-left:0.36em;
     opacity:0;
-    animation:tagSlideAndDismiss 4.2s cubic-bezier(0.25, 1, 0.3, 1) forwards;
+    animation:tagSlideAndDismiss 5.5s cubic-bezier(0.25, 1, 0.3, 1) forwards;
   }
 
   @keyframes tagSlideAndDismiss{
-    0%, 30%{
+    0%, 26%{
       opacity:0;
       transform:translateY(16px);
     }
-    40%{
+    40%, 66%{
       opacity:1;
       transform:translateY(0);
     }
-    54%{
-      opacity:1;
-      transform:translateY(0);
-    }
-    /* Dissolves before the Y burst */
-    64%, 100%{
+    75%, 100%{
       opacity:0;
       transform:translateY(-12px);
     }
@@ -281,7 +273,7 @@
     animation:spectrumFlow 7s ease infinite alternate;
   }
   .links{display:flex;gap:32px;align-items:center;font-size:.95rem;font-weight:500}
-  .links a{color:var(--muted)}
+  .links a{color:var(--muted);transition:color .2s ease}
   .links a.on, .links a:hover{color:var(--orange)}
   .right{display:flex;gap:16px;align-items:center}
   .pill{
@@ -292,7 +284,7 @@
     box-shadow:0 4px 14px rgba(255,90,0,.12);
   }
   .pill:hover{background:var(--orange);color:#FFFFFF}
-  #menuBtn{display:none;background:#FFFFFF;border:1px solid var(--line-subtle);color:var(--orange);border-radius:10px;padding:8px 12px;font-family:var(--sans);font-weight:600}
+  #menuBtn{display:none;background:#FFFFFF;border:1px solid var(--line-subtle);color:var(--orange);border-radius:10px;padding:8px 12px;font-family:var(--sans);font-weight:600;cursor:pointer}
   @media(max-width:900px){
     #menuBtn{display:block}
     .links{display:none;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:#FFFFFF;padding:22px;gap:18px;border-bottom:1px solid var(--line-subtle);box-shadow:0 12px 30px rgba(0,0,0,.06)}
@@ -333,10 +325,8 @@
   @keyframes btnSweep{ 0%,60%{left:-100%} 100%{left:200%} }
 
   /* ========================================================
-     TRANSITIONING COLOR SECTIONS ON SCROLL
+     SECTIONS & LAYOUT
      ======================================================== */
-  
-  /* 1. HERO: Warm Sunset Peach & Amber Glow */
   .hero{
     position:relative;
     min-height:100svh;
@@ -399,7 +389,6 @@
     .hero-photo{width:100%;height:58%;bottom:auto;top:60px;-webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent);mask-image:linear-gradient(to bottom,#000 45%,transparent);opacity:0.75}
   }
 
-  /* 2. STRIP: Radiant Apricot Glow */
   .strip{
     background:linear-gradient(180deg, #FFF1E6 0%, #FFEBE0 100%);
     border-top:1px solid var(--line-subtle);
@@ -413,7 +402,6 @@
   .st span{font-size:.85rem;color:var(--muted)}
   @media(max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr;row-gap:26px}.st:nth-child(3){border-left:none}}
 
-  /* 3. FIND: Romantic Rose & Electric Magenta Undertone */
   .find{
     background:linear-gradient(180deg, #FFEBE0 0%, #FDEBF4 50%, #F8E7F8 100%);
     padding-bottom:0;
@@ -459,7 +447,7 @@
   .acts i.big{width:44px;height:44px;background:var(--spectrum);background-size:200% 100%;color:#FFF;border:none;box-shadow:0 6px 18px rgba(255,90,0,.45)}
   .sample{font-size:.75rem;color:var(--muted);text-align:center;margin-top:10px}
 
-  /* Disco City Skyline Light Effect */
+  /* Skyline & Lights */
   .skyline{display:block;width:100%;height:clamp(180px,30vw,320px);margin-top:30px}
   .disco-fast{ animation: discoBeat 0.9s infinite alternate cubic-bezier(.4, 0, .2, 1); }
   .disco-mid{ animation: discoBeat 1.4s infinite alternate cubic-bezier(.4, 0, .2, 1) 0.3s; }
@@ -476,37 +464,17 @@
     100%{ opacity: 1; filter: drop-shadow(0 0 10px #FF5A00); transform: scaleY(1.05); }
   }
 
-  /* 4. HOW IT WORKS: Twilight Lilac & Lavender Mist */
-  #how{
-    background:linear-gradient(180deg, #F8E7F8 0%, #F0ECFA 100%);
-  }
-
-  /* 5. VERIFICATION: Warm Golden Champagne Glow */
+  #how{ background:linear-gradient(180deg, #F8E7F8 0%, #F0ECFA 100%); }
   #verification{
     background:linear-gradient(180deg, #F0ECFA 0%, #FFF7ED 100%);
     border-top:1px solid var(--line-subtle);
     border-bottom:1px solid var(--line-subtle);
   }
+  #intentions{ background:linear-gradient(180deg, #FFF7ED 0%, #FBF1F8 100%); }
+  #dates{ background:linear-gradient(180deg, #FBF1F8 0%, #EFEFFA 100%); }
+  #safety{ background:linear-gradient(180deg, #EFEFFA 0%, #FFF3EB 100%); }
+  #faq{ background:linear-gradient(180deg, #FFF3EB 0%, #F6F1F8 100%); }
 
-  /* 6. INTENTIONS: Dusk Violet Blush */
-  #intentions{
-    background:linear-gradient(180deg, #FFF7ED 0%, #FBF1F8 100%);
-  }
-
-  /* 7. DATES: Soft Twilight Sky */
-  #dates{
-    background:linear-gradient(180deg, #FBF1F8 0%, #EFEFFA 100%);
-  }
-
-  /* 8. SAFETY & FAQ: Pearlescent Champagne */
-  #safety{
-    background:linear-gradient(180deg, #EFEFFA 0%, #FFF3EB 100%);
-  }
-  #faq{
-    background:linear-gradient(180deg, #FFF3EB 0%, #F6F1F8 100%);
-  }
-
-  /* 9. FINAL CTA: Glowing Transition into Dusk Plum */
   .final{
     text-align:center;
     background:linear-gradient(180deg, #F6F1F8 0%, #2A1428 50%, #120815 100%);
@@ -517,7 +485,6 @@
   .final .lead{ color:#D1C2CF; }
   .final .eyebrow{ color:#FFA826; }
 
-  /* CARDS & CONTAINERS */
   .grid{display:grid;gap:22px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
   .card{
     background:rgba(255, 255, 255, 0.88);
@@ -574,17 +541,10 @@
 </head>
 <body>
 
-<!-- ========================================================
-     CHOREOGRAPHED INTRO: Y ZOOMS IN -> ARN REVEALS -> DISMISS -> Y ENGULFS SCREEN
-     ======================================================== -->
-<div id="splash" aria-hidden="true">
-  <!-- Blurred Romantic Couple Photo -->
+<!-- CHOREOGRAPHED INTRO -->
+<div id="splash" aria-hidden="true" onclick="dismissSplash()">
   <div class="splash-bg-photo"></div>
-  
-  <!-- Soft Champagne & Alabaster Light Overlay -->
   <div class="splash-overlay"></div>
-
-  <!-- Amber Halo -->
   <div class="splash-amber-halo"></div>
 
   <div class="splash-content">
@@ -598,9 +558,7 @@
   <div class="skip">Tap to skip</div>
 </div>
 
-<!-- ========================================================
-     HEADER NAVIGATION
-     ======================================================== -->
+<!-- HEADER NAVIGATION -->
 <header>
   <div class="wrap nav">
     <a href="#top" class="brand">YARN</a>
@@ -613,13 +571,13 @@
     </nav>
     <div class="right">
       <button class="pill" onclick="soon('Sign-up')">Sign Up</button>
-      <button id="menuBtn" aria-label="Menu">Menu</button>
+      <button id="menuBtn" aria-label="Menu" onclick="toggleMenu()">Menu</button>
     </div>
   </div>
 </header>
 
 <main id="top">
-  <!-- 1. HERO: Warm Sunset Peach & Amber Glow -->
+  <!-- 1. HERO -->
   <section class="hero">
     <div class="hero-photo" role="img" aria-label="A couple sharing an evening together"></div>
     <div class="wrap hero-inner">
@@ -631,7 +589,7 @@
     </div>
   </section>
 
-  <!-- 2. STRIP: Radiant Apricot Glow -->
+  <!-- 2. STRIP -->
   <div class="strip">
     <div class="wrap">
       <div class="st"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><b>Verified People</b><span>Real profiles. Genuine connections.</span></div>
@@ -641,7 +599,7 @@
     </div>
   </div>
 
-  <!-- 3. FIND: Romantic Rose & Electric Magenta Undertone -->
+  <!-- 3. FIND -->
   <section class="find" id="find">
     <div class="wrap split">
       <div class="reveal">
@@ -671,7 +629,7 @@
       </div>
     </div>
 
-    <!-- Skyline Accent with Disco City Lights -->
+    <!-- Skyline Graphic -->
     <svg class="skyline" id="skyline" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-label="Disco Skyline over water">
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8E7F8" stop-opacity="0"/><stop offset="1" stop-color="#FF5A00" stop-opacity=".22"/></linearGradient>
@@ -684,7 +642,7 @@
     </svg>
   </section>
 
-  <!-- 4. HOW IT WORKS: Twilight Lilac & Lavender Mist -->
+  <!-- 4. HOW IT WORKS -->
   <section id="how">
     <div class="wrap center reveal">
       <div class="eyebrow">How YARN works</div>
@@ -698,7 +656,7 @@
     </div>
   </section>
 
-  <!-- 5. VERIFICATION: Warm Golden Champagne Glow -->
+  <!-- 5. VERIFICATION -->
   <section id="verification">
     <div class="wrap reveal">
       <div class="eyebrow">Identity & profile verification</div>
@@ -712,7 +670,7 @@
     </div>
   </section>
 
-  <!-- 6. INTENTIONS: Dusk Violet Blush -->
+  <!-- 6. INTENTIONS -->
   <section id="intentions">
     <div class="wrap center reveal">
       <div class="eyebrow">Relationship intentions</div>
@@ -725,7 +683,7 @@
     </div>
   </section>
 
-  <!-- 7. DATES: Soft Twilight Sky -->
+  <!-- 7. DATES -->
   <section id="dates">
     <div class="wrap center reveal">
       <div class="eyebrow">Real-life date planning</div>
@@ -739,111 +697,130 @@
     </div>
   </section>
 
-  <!-- 8. SAFETY & FAQ: Pearlescent Champagne -->
+  <!-- 8. SAFETY & FAQ -->
   <section id="safety">
     <div class="wrap center reveal">
       <div class="eyebrow">Privacy & safety</div>
       <h2>Built to protect you.</h2>
+      <p class="lead">Safety and respect are baked into every layer of YARN.</p>
       <div class="grid">
         <div class="card"><h3>You are in control</h3><p>Block, report and unmatch at any time. Choose which optional details to share.</p></div>
-        <div class="card"><h3>Private by design</h3><p>No public home addresses, ID numbers or live locations. Verification documents stay private.</p></div>
-        <div class="card"><h3>Active moderation</h3><p>Reports of harassment, scams and fake profiles are reviewed by trained staff.</p></div>
+        <div class="card"><h3>Private by Design</h3><p>Your documents, location, and contact information are strictly protected and never shared.</p></div>
+        <div class="card"><h3>Zero Tolerance</h3><p>Harassment, fake accounts, and deceptive practices lead to an immediate ban.</p></div>
       </div>
     </div>
   </section>
 
   <section id="faq">
     <div class="wrap center reveal">
-      <div class="eyebrow">FAQ</div>
-      <h2>Good questions.</h2>
+      <div class="eyebrow">Frequently asked questions</div>
+      <h2>Got questions? We've got answers.</h2>
       <div class="faq">
-        <details><summary>Who can join YARN?</summary><p>Adults aged 18 and above. Age is confirmed through identity verification.</p></details>
-        <details><summary>Do I need to be wealthy or established to join?</summary><p>No. Verification is optional and has pathways for students, graduates, employees and business owners. Income does not decide your worth.</p></details>
-        <details><summary>Are my documents visible to other members?</summary><p>Never. Others only see which verification badges you have earned.</p></details>
-        <details><summary>Does verification guarantee someone is safe?</summary><p>No. It reduces risk but cannot remove it. We encourage first dates in public places.</p></details>
-        <details><summary>Is YARN free?</summary><p>Pricing has not been decided yet. We will be clear about any costs before you pay for anything.</p></details>
+        <details>
+          <summary>Is YARN free to use?</summary>
+          <p>YARN offers essential features for free, with premium verification options and enhanced capabilities available for dedicated members.</p>
+        </details>
+        <details>
+          <summary>How does verification work?</summary>
+          <p>You can verify identity, career, or education through secure document submission. Documents are used strictly for validation and are never displayed on your profile.</p>
+        </details>
+        <details>
+          <summary>Is my personal information safe?</summary>
+          <p>Yes. We employ end-to-end encryption and robust security protocols. Your private identity documents and precise location are never sold or shared.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- 9. FINAL CTA: Glowing Transition into Dusk Plum -->
-  <section id="join" class="final">
-    <div class="wrap reveal">
-      <div class="eyebrow">Ready when you are</div>
-      <h2>Meet with Intention.</h2>
-      <p class="lead" style="margin-bottom:30px">Join people who want something real, at their own pace.</p>
+  <!-- 9. FINAL CTA -->
+  <section class="final">
+    <div class="wrap center reveal">
+      <div class="eyebrow">Ready to begin?</div>
+      <h2>Ready for a connection with intention?</h2>
+      <p class="lead" style="margin-bottom:30px;">Join thousands of genuine individuals looking for real relationships.</p>
       <button class="btn btn-gold" onclick="soon('Sign-up')">Let's YARN <span>→</span></button>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div><span class="brand" style="font-size:1.6rem">YARN</span><br>Meet with Intention.</div>
-      <nav><a href="#how">How it works</a><a href="#verification">Verification</a><a href="#safety">Safety</a><a href="#faq">FAQ</a></nav>
+  <div class="wrap foot">
+    <div>
+      <div class="brand" style="font-size:1.6rem;margin-bottom:8px;">YARN</div>
+      <p>Meet with Intention.</p>
     </div>
-    <p class="fine">© 2026 YARN. Early design prototype: sign-up, log in, verification, matching and messaging are not built yet.</p>
+    <nav>
+      <a href="#top">Home</a>
+      <a href="#find">Discover</a>
+      <a href="#how">About</a>
+      <a href="#safety">Safety</a>
+      <a href="#" onclick="soon('Privacy Policy');return false;">Privacy</a>
+      <a href="#" onclick="soon('Terms');return false;">Terms</a>
+    </nav>
+  </div>
+  <div class="wrap fine">
+    &copy; 2026 YARN. All rights reserved.
   </div>
 </footer>
 
 <script>
-  // Quick skip on tap
-  (function(){
-    var splash = document.getElementById("splash");
-    if(!splash) return;
-    splash.addEventListener("click", function(){
-      splash.classList.add("out");
-      setTimeout(function(){ splash.remove(); }, 400);
+  function dismissSplash() {
+    const splash = document.getElementById('splash');
+    if (splash) splash.classList.add('out');
+  }
+
+  function toggleMenu() {
+    const links = document.getElementById('links');
+    if (links) links.classList.toggle('open');
+  }
+
+  function soon(feature) {
+    alert(feature + " feature coming soon!");
+  }
+
+  // Scroll Reveal Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
     });
-  })();
+  }, { threshold: 0.1 });
 
-  function soon(name){ alert(name + " is coming soon. YARN is actively in development!"); }
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Mobile menu
-  var links = document.getElementById("links");
-  document.getElementById("menuBtn").onclick = function(){ links.classList.toggle("open"); };
-  links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); }); });
+  // Dynamic Skyline Silhouette Generator
+  (function buildCitySkyline() {
+    const cityg = document.getElementById('cityg');
+    if (!cityg) return;
 
-  // Disco City Skyline Generator
-  (function(){
-    var seed = 11, g = "", x = 250;
-    function r(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-    g += '<rect x="0" y="195" width="260" height="3" fill="#D6C7BC"/>';
-    g += '<path d="M88 198 L104 60 L120 198" fill="none" stroke="#FF5A00" stroke-opacity=".5" stroke-width="2"/>';
-    for(var i = -5; i <= 5; i++){
-      if(i === 0) continue;
-      g += '<line x1="104" y1="72" x2="'+(104 + i*22)+'" y2="195" stroke="#FFA826" stroke-opacity=".35"/>';
-    }
-    for(var d = 6; d < 255; d += 14){ g += '<rect x="'+d+'" y="192" width="3" height="3" fill="#FF7E1D" class="disco-fast"/>'; }
-    
-    var discoColors = ["#FF2A7A", "#FF5A00", "#FFA826", "#9E47FF", "#00C8FF", "#FFB300"];
-    var discoClasses = ["disco-fast", "disco-mid", "disco-slow", "disco-glow"];
+    const colors = ['#FF5A00', '#FF2A7A', '#FFA826', '#9E47FF', '#00C8FF'];
+    const classes = ['disco-fast', 'disco-mid', 'disco-slow'];
 
-    while(x < 1200){
-      var w = 28 + Math.floor(r()*44), bh = 40 + Math.floor(r()*r()*150), y = 200 - bh;
-      g += '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+bh+'" fill="#DFD2C7"/>';
-      if(r() > .8){ g += '<rect x="'+(x + w/2 - 1)+'" y="'+(y - 16)+'" width="2" height="16" fill="#DFD2C7"/>'; }
-      
-      for(var wy = y + 8; wy < 194; wy += 9){
-        for(var wx = x + 5; wx < x + w - 6; wx += 7){
-          if(r() > .55){
-            var col = discoColors[Math.floor(r() * discoColors.length)];
-            var cls = discoClasses[Math.floor(r() * discoClasses.length)];
-            g += '<rect class="'+cls+'" x="'+wx+'" y="'+wy+'" width="3.5" height="5" fill="'+col+'" style="color:'+col+'"/>';
+    let svgInner = '';
+    let x = 0;
+
+    while (x < 1200) {
+      const w = Math.floor(Math.random() * 35) + 25;
+      const h = Math.floor(Math.random() * 120) + 50;
+      const y = 200 - h;
+
+      svgInner += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#1C120C" />`;
+
+      // Add lighted windows
+      for (let wx = x + 4; wx < x + w - 6; wx += 8) {
+        for (let wy = y + 8; wy < 190; wy += 14) {
+          if (Math.random() > 0.45) {
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const animClass = classes[Math.floor(Math.random() * classes.length)];
+            svgInner += `<rect x="${wx}" y="${wy}" width="4" height="6" fill="${color}" class="${animClass}" />`;
           }
         }
       }
-      x += w + 3;
+      x += w + 2;
     }
-    document.getElementById("cityg").innerHTML = g;
+    cityg.innerHTML = svgInner;
   })();
-
-  // Fade sections in as you scroll
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("show"); io.unobserve(e.target); } });
-  }, {threshold:.1});
-  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
 </script>
 </body>
 </html>
