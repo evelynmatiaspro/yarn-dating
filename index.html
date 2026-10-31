@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>YARN – Meet with Intention</title>
 <meta name="description" content="YARN is a premier dating platform for people who want something real. Meet with Intention.">
+
+<!-- Apple iOS Home Screen App (PWA) Settings -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="YARN">
+<link rel="apple-touch-icon" href="opening-couple.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700;0,6..96,900;1,6..96,700&family=Cinzel:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -56,7 +63,7 @@
   svg.i{width:24px;height:24px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   /* ========================================================
-     OPENING SCREEN: RESTORED COUPLE BACKGROUND & SLOW-MO ZOOM
+     OPENING SCREEN (RESTORED COUPLE PHOTO & TYPEWRITER HAPTICS)
      ======================================================== */
   #splash{
     position:fixed;inset:0;z-index:999;
@@ -68,7 +75,6 @@
   #splash.out{opacity:0 !important;visibility:hidden !important;pointer-events:none !important}
   @keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
 
-  /* The Loved Couple Photo Restored in Intro */
   .splash-bg-photo{
     position:absolute;inset:-20px;
     background-color:#EBDCCF;
@@ -145,6 +151,7 @@
     100%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(32); opacity:0; filter:blur(24px); }
   }
 
+  /* Tactile Typewriter Jitter for ARN */
   .arn-chars{
     display:inline-block;
     background:var(--spectrum);
@@ -161,6 +168,10 @@
 
   @keyframes arnWaterSplash{
     0%, 18%{ opacity:0; transform:translateX(-35px) scale(0.92); filter:blur(10px); }
+    /* 3 typewriter impact vibrations */
+    24%{ transform:translateX(-10px) translateY(-2px); }
+    28%{ transform:translateX(-5px) translateY(2px); }
+    32%{ transform:translateX(-2px) translateY(-1px); }
     36%, 54%{ opacity:1; transform:translateX(0) scale(1); filter:blur(0px); }
     64%{ opacity:0.3; transform:translateX(25px) scale(1.1); filter:blur(10px) drop-shadow(0 0 25px rgba(0,200,255,0.7)); }
     70%, 100%{ opacity:0; transform:translateX(45px) scale(0.85); filter:blur(16px); }
@@ -405,7 +416,7 @@
   }
 
   /* ========================================================
-     FEATURE STRIP
+     FEATURE STRIP (FROSTED GLASS ON MOVING COLORS)
      ======================================================== */
   .strip{
     background:rgba(255, 255, 255, 0.45);
