@@ -63,7 +63,7 @@
   svg.i{width:24px;height:24px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   /* ========================================================
-     OPENING SCREEN (RESTORED COUPLE PHOTO & TYPEWRITER HAPTICS)
+     OPENING SCREEN (RESTORED PHOTO + SMOOTH ARN + DATING SUB)
      ======================================================== */
   #splash{
     position:fixed;inset:0;z-index:999;
@@ -123,6 +123,7 @@
     font-size:clamp(5rem, 22vw, 9.5rem);
     line-height:0.92;
     letter-spacing:0.02em;
+    position:relative;
   }
 
   .y-slot{display:inline-block;position:relative}
@@ -151,7 +152,14 @@
     100%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(32); opacity:0; filter:blur(24px); }
   }
 
-  /* Tactile Typewriter Jitter for ARN */
+  /* ARN Slot Container with "dating" Sub-label */
+  .arn-slot{
+    display:inline-block;
+    position:relative;
+    vertical-align:baseline;
+  }
+
+  /* Smooth ARN reveal without any bouncing */
   .arn-chars{
     display:inline-block;
     background:var(--spectrum);
@@ -163,18 +171,51 @@
     opacity:0;
     white-space:nowrap;
     will-change:transform, opacity, filter;
-    animation:arnWaterSplash 5.6s cubic-bezier(0.25, 1, 0.35, 1) forwards;
+    animation:arnSmoothReveal 5.6s cubic-bezier(0.25, 1, 0.35, 1) forwards;
   }
 
-  @keyframes arnWaterSplash{
-    0%, 18%{ opacity:0; transform:translateX(-35px) scale(0.92); filter:blur(10px); }
-    /* 3 typewriter impact vibrations */
-    24%{ transform:translateX(-10px) translateY(-2px); }
-    28%{ transform:translateX(-5px) translateY(2px); }
-    32%{ transform:translateX(-2px) translateY(-1px); }
-    36%, 54%{ opacity:1; transform:translateX(0) scale(1); filter:blur(0px); }
-    64%{ opacity:0.3; transform:translateX(25px) scale(1.1); filter:blur(10px) drop-shadow(0 0 25px rgba(0,200,255,0.7)); }
-    70%, 100%{ opacity:0; transform:translateX(45px) scale(0.85); filter:blur(16px); }
+  @keyframes arnSmoothReveal{
+    0%, 18%{
+      opacity:0;
+      transform:translateX(-30px);
+      filter:blur(10px);
+    }
+    36%, 54%{
+      opacity:1;
+      transform:translateX(0);
+      filter:blur(0px);
+    }
+    64%{
+      opacity:0.3;
+      transform:translateX(20px);
+      filter:blur(8px);
+    }
+    70%, 100%{
+      opacity:0;
+      transform:translateX(35px);
+      filter:blur(14px);
+    }
+  }
+
+  /* Small "dating" positioned underneath the right side of ARN */
+  .dating-sub{
+    position:absolute;
+    right:2px;
+    bottom:-18px;
+    font-family:var(--sans);
+    font-size:clamp(0.68rem, 2.1vw, 0.95rem);
+    font-weight:700;
+    letter-spacing:0.22em;
+    text-transform:lowercase;
+    background:var(--spectrum);
+    background-size:260% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    opacity:0;
+    white-space:nowrap;
+    will-change:transform, opacity, filter;
+    animation:arnSmoothReveal 5.6s cubic-bezier(0.25, 1, 0.35, 1) forwards;
   }
 
   .tagline-anim{
@@ -184,7 +225,7 @@
     letter-spacing:0.36em;
     text-transform:uppercase;
     color:var(--text-primary);
-    margin-top:16px;
+    margin-top:28px;
     padding-left:0.36em;
     opacity:0;
     will-change:transform, opacity, filter;
@@ -192,10 +233,26 @@
   }
 
   @keyframes tagWaterSplash{
-    0%, 22%{ opacity:0; transform:translateY(18px) scale(0.96); filter:blur(6px); }
-    36%, 52%{ opacity:1; transform:translateY(0) scale(1); filter:blur(0px); }
-    63%{ opacity:0.25; transform:translateY(-8px) scale(1.05); filter:blur(8px); }
-    70%, 100%{ opacity:0; transform:translateY(-18px) scale(0.9); filter:blur(14px); }
+    0%, 22%{
+      opacity:0;
+      transform:translateY(18px) scale(0.96);
+      filter:blur(6px);
+    }
+    36%, 52%{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      filter:blur(0px);
+    }
+    63%{
+      opacity:0.25;
+      transform:translateY(-8px) scale(1.05);
+      filter:blur(8px);
+    }
+    70%, 100%{
+      opacity:0;
+      transform:translateY(-18px) scale(0.9);
+      filter:blur(14px);
+    }
   }
 
   #splash .skip{
@@ -621,9 +678,8 @@
   <div class="aurora-orb orb-5"></div>
 </div>
 
-<!-- CHOREOGRAPHED INTRO (RESTORED COUPLE PHOTO & AMBER HALO) -->
+<!-- CHOREOGRAPHED INTRO (RESTORED COUPLE PHOTO, SMOOTH ARN & DATING SUB) -->
 <div id="splash" aria-hidden="true" onclick="dismissSplash()">
-  <!-- Couple photo restored to opening screen -->
   <div class="splash-bg-photo"></div>
   <div class="splash-overlay"></div>
   <div class="splash-amber-halo"></div>
@@ -631,7 +687,10 @@
   <div class="splash-content">
     <div class="brand-stage">
       <span class="y-slot"><span class="y-char">Y</span></span>
-      <span class="arn-chars">ARN</span>
+      <span class="arn-slot">
+        <span class="arn-chars">ARN</span>
+        <span class="dating-sub">dating</span>
+      </span>
     </div>
     <div class="tagline-anim">Meet with Intention.</div>
   </div>
@@ -788,7 +847,7 @@
     <div class="wrap center">
       <div class="eyebrow">Trust You Can See</div>
       <h2>Verified profiles. Zero catfishes.</h2>
-      <p class="lead">Each badge shows one specific check that was actually completed. Badges are never given for claims alone, and your documents are never shown to other members.</p>
+      <p class="lead">Badges are awarded only after strict verification. Your personal IDs and private documents remain 100% confidential and are never shared with anyone.</p>
       
       <div class="badges">
         <span class="badge">Identity Verified</span>
@@ -944,7 +1003,6 @@
   window.addEventListener('load', centreY);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(centreY);
 
-  // 3 TYPEWRITER-STYLE SHORT HAPTIC VIBRATIONS AS "ARN" WRITES ON DISPLAY
   function triggerWritingHaptics() {
     if ("vibrate" in navigator) {
       navigator.vibrate([35, 55, 35, 55, 35]);
