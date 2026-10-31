@@ -236,7 +236,7 @@
   /* Buttons */
   .btn{
     display:inline-flex;gap:10px;align-items:center;justify-content:center;
-    padding:16px 38px;border-radius:50px;font-weight:600;font-size:1.02rem;
+    padding:16px 44px;border-radius:50px;font-weight:600;font-size:1.05rem;
     cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;font-family:var(--sans);
   }
   .btn-gold{
@@ -253,21 +253,10 @@
     transform:translateY(-2px) scale(1.02);
     box-shadow:0 12px 38px rgba(255,90,0,.55), 0 4px 16px rgba(0,200,255,.35);
   }
-  .btn-outline{
-    background:#FFFFFF;
-    color:var(--text-primary);
-    border:1.5px solid var(--line-subtle);
-    box-shadow:0 4px 16px rgba(0,0,0,.04);
-  }
-  .btn-outline:hover{
-    border-color:var(--orange);
-    color:var(--orange);
-    transform:translateY(-2px);
-  }
   @keyframes btnSpectrumFlow{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
 
   /* ========================================================
-     HERO SECTION (CLEAN & OPEN - NO CARDS HERE)
+     HERO: DEEP BLURRED PHOTO WITH SMOOTH MOVEMENT ILLUSION
      ======================================================== */
   .hero{
     position:relative;
@@ -279,17 +268,26 @@
     background:#FFF8F2;
   }
 
+  /* Deeply blurred background with subtle floating movement illusion */
   .hero-photo{
     position:absolute;
-    inset:0;
+    inset:-35px;
     background-color:#EFE2D6;
     background-image:url('opening-couple.jpg'), url('images/opening-couple.jpg');
     background-size:cover;
     background-position:center 12%;
     background-repeat:no-repeat;
-    filter:blur(1px) brightness(0.98) saturate(1.15);
-    opacity:0.88;
+    filter:blur(10px) brightness(0.98) saturate(1.2);
+    opacity:0.86;
     z-index:1;
+    will-change:transform;
+    animation:heroMotionIllusion 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroMotionIllusion{
+    0%{ transform:scale(1.06) translate3d(0, 0, 0); }
+    50%{ transform:scale(1.15) translate3d(-10px, -8px, 0); }
+    100%{ transform:scale(1.09) translate3d(10px, 6px, 0); }
   }
 
   .hero-vignette{
@@ -297,9 +295,9 @@
     inset:0;
     background:linear-gradient(
       180deg,
-      rgba(255, 248, 242, 0.3) 0%,
-      rgba(255, 248, 242, 0.18) 30%,
-      rgba(255, 241, 230, 0.72) 75%,
+      rgba(255, 248, 242, 0.35) 0%,
+      rgba(255, 248, 242, 0.22) 30%,
+      rgba(255, 241, 230, 0.75) 75%,
       #FFF1E6 100%
     );
     z-index:2;
@@ -371,7 +369,7 @@
 
   @media(max-width:900px){
     .hero{padding-top:120px;padding-bottom:60px;min-height:auto}
-    .hero-photo{background-position:center 4%;opacity:0.86}
+    .hero-photo{background-position:center 4%;}
   }
 
   /* ========================================================
@@ -391,7 +389,7 @@
   @media(max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr;row-gap:26px}.st:nth-child(3){border-left:none}}
 
   /* ========================================================
-     FIND YOUR PERSON SECTION (WITH CLEAR PHOTOS ON CARDS)
+     FIND YOUR PERSON SECTION (EXACT RESTORED LAYOUT)
      ======================================================== */
   .find{
     background:linear-gradient(180deg, #FFEBE0 0%, #FDEBF4 50%, #F8E7F8 100%);
@@ -423,7 +421,7 @@
     font-weight:700;
   }
 
-  /* Profile Cards with direct online portraits */
+  /* Profile Cards with high-resolution portraits */
   .pcards{
     position:relative;
     height:460px;
@@ -477,7 +475,6 @@
     animation:fl2 8s ease-in-out infinite;
   }
   
-  /* High-resolution portraits for Amara and Daniel */
   .pc1 .ph{
     background-image:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80');
   }
@@ -620,7 +617,6 @@
       
       <div class="hero-cta-group">
         <button class="btn btn-gold" onclick="soon('Sign-up')">Let's YARN <span>→</span></button>
-        <a href="#how" class="btn btn-outline">Explore How It Works</a>
       </div>
 
       <div class="trust-proof">
@@ -644,7 +640,7 @@
     </div>
   </div>
 
-  <!-- 3. FIND YOUR PERSON (RESTORED WITH HIGH-RES WORKING CARDS) -->
+  <!-- 3. FIND YOUR PERSON (RESTORED WITH WORKING CARDS) -->
   <section class="find" id="find">
     <div class="wrap split">
       <div>
@@ -671,7 +667,7 @@
         <div class="small">YARN — MEET WITH INTENTION.</div>
       </div>
 
-      <!-- Working Sample Profile Cards (Amara & Daniel) -->
+      <!-- Working Sample Profile Cards -->
       <div>
         <div class="pcards">
           <div class="pc pc1">
@@ -741,7 +737,7 @@
     <div class="wrap center">
       <div class="eyebrow">Trust You Can See</div>
       <h2>Verified profiles. Zero catfishes.</h2>
-      <p class="lead">Each badge shows one specific check that was actually completed. Badges are never given for claims alone, and your documents are never shown to other members.</p>
+      <p class="lead">Badges are awarded only after strict verification. Your personal IDs and private documents remain 100% confidential and are never shared with anyone.</p>
       
       <div class="badges">
         <span class="badge">Identity Verified</span>
