@@ -267,7 +267,7 @@
   @keyframes btnSpectrumFlow{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
 
   /* ========================================================
-     HERO SECTION (CLEAN & OPEN - NO OVERLAPPING CARDS)
+     HERO SECTION (CLEAN & OPEN - NO CARDS HERE)
      ======================================================== */
   .hero{
     position:relative;
@@ -391,7 +391,7 @@
   @media(max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr;row-gap:26px}.st:nth-child(3){border-left:none}}
 
   /* ========================================================
-     FIND YOUR PERSON SECTION (EXACT LAYOUT + CARDS)
+     FIND YOUR PERSON SECTION (WITH CLEAR PHOTOS ON CARDS)
      ======================================================== */
   .find{
     background:linear-gradient(180deg, #FFEBE0 0%, #FDEBF4 50%, #F8E7F8 100%);
@@ -423,11 +423,12 @@
     font-weight:700;
   }
 
-  /* Profile Cards in Find section */
+  /* Profile Cards with direct online portraits */
   .pcards{
     position:relative;
     height:460px;
-    margin:20px 0;
+    max-width:360px;
+    margin:20px auto;
   }
   .pc{
     position:absolute;
@@ -435,19 +436,20 @@
     overflow:hidden;
     border:1px solid rgba(255,255,255,.95);
     box-shadow:0 24px 60px rgba(130, 40, 90, 0.16);
-    background:#FFFFFF;
+    background:#201410;
   }
   .pc .ph{
     position:absolute;
     inset:0;
     background-size:cover;
     background-position:center top;
+    background-repeat:no-repeat;
   }
   .pc::after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(transparent 38%, rgba(20, 10, 5, 0.92) 86%);
+    background:linear-gradient(transparent 40%, rgba(20, 10, 5, 0.92) 88%);
     z-index:1;
   }
   .pc .info{
@@ -459,7 +461,7 @@
     color:#FFFFFF;
   }
   .pc1{
-    width:min(280px, 60%);
+    width:255px;
     height:410px;
     left:2%;
     top:10px;
@@ -467,7 +469,7 @@
     animation:fl1 7s ease-in-out infinite;
   }
   .pc2{
-    width:min(250px, 54%);
+    width:235px;
     height:380px;
     right:2%;
     top:65px;
@@ -475,12 +477,12 @@
     animation:fl2 8s ease-in-out infinite;
   }
   
-  /* Fallback to stunning Unsplash portraits so cards never appear blank */
+  /* High-resolution portraits for Amara and Daniel */
   .pc1 .ph{
-    background-image:url('images/amara.jpg'), url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80');
+    background-image:url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80');
   }
   .pc2 .ph{
-    background-image:url('images/daniel.jpg'), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80');
+    background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80');
   }
 
   .pc .nm{font-size:1.15rem;font-weight:700}
@@ -605,7 +607,7 @@
 </header>
 
 <main id="top">
-  <!-- 1. HERO SECTION (CLEAN - NO DUPLICATE OVERLAPPING CARDS) -->
+  <!-- 1. HERO SECTION -->
   <section class="hero">
     <div class="hero-photo" role="img" aria-label="A happy couple sharing an intentional moment"></div>
     <div class="hero-vignette"></div>
@@ -642,7 +644,7 @@
     </div>
   </div>
 
-  <!-- 3. FIND YOUR PERSON (EXACT SECTION RESTORED WITH WORKING CARDS) -->
+  <!-- 3. FIND YOUR PERSON (RESTORED WITH HIGH-RES WORKING CARDS) -->
   <section class="find" id="find">
     <div class="wrap split">
       <div>
@@ -669,7 +671,7 @@
         <div class="small">YARN — MEET WITH INTENTION.</div>
       </div>
 
-      <!-- Working Sample Profile Cards -->
+      <!-- Working Sample Profile Cards (Amara & Daniel) -->
       <div>
         <div class="pcards">
           <div class="pc pc1">
