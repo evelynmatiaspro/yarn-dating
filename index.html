@@ -43,7 +43,7 @@
     line-height: 1.65;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    background: #FFF8F2;
+    background: #FFF9F5;
   }
   a{color:inherit;text-decoration:none}
   h1,h2,h3,h4{font-family:var(--font-authority);font-weight:800;line-height:1.15;color:var(--text-primary)}
@@ -54,6 +54,92 @@
   .lead{color:var(--muted);max-width:580px;font-size:1.06rem;line-height:1.7}
   .center{text-align:center}.center .lead{margin:0 auto}
   svg.i{width:24px;height:24px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ========================================================
+     LIVING ANIMATED MULTICOLOR AURORA BACKGROUND
+     ======================================================== */
+  .living-bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    overflow:hidden;
+    background:#FFF9F5;
+  }
+  .aurora-orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:0.62;
+    will-change:transform;
+    mix-blend-mode:multiply;
+  }
+  /* Living Pink Orb */
+  .orb-1{
+    width:clamp(350px, 62vw, 750px);
+    height:clamp(350px, 62vw, 750px);
+    background:radial-gradient(circle, #FF2A7A 0%, rgba(255, 42, 122, 0) 70%);
+    top:-12%;left:-10%;
+    animation:driftOrb1 20s infinite alternate ease-in-out;
+  }
+  /* Living Orange / Amber Orb */
+  .orb-2{
+    width:clamp(360px, 68vw, 820px);
+    height:clamp(360px, 68vw, 820px);
+    background:radial-gradient(circle, #FF6A00 0%, rgba(255, 106, 0, 0) 70%);
+    top:20%;right:-18%;
+    animation:driftOrb2 23s infinite alternate ease-in-out;
+  }
+  /* Living Violet / Purple Orb */
+  .orb-3{
+    width:clamp(340px, 58vw, 720px);
+    height:clamp(340px, 58vw, 720px);
+    background:radial-gradient(circle, #9E47FF 0%, rgba(158, 71, 255, 0) 70%);
+    bottom:12%;left:5%;
+    animation:driftOrb3 25s infinite alternate ease-in-out;
+  }
+  /* Living Golden Honey Orb */
+  .orb-4{
+    width:clamp(320px, 52vw, 680px);
+    height:clamp(320px, 52vw, 680px);
+    background:radial-gradient(circle, #FFA826 0%, rgba(255, 168, 38, 0) 70%);
+    top:55%;left:-12%;
+    animation:driftOrb4 22s infinite alternate ease-in-out;
+  }
+  /* Living Sky Blue Orb */
+  .orb-5{
+    width:clamp(280px, 46vw, 620px);
+    height:clamp(280px, 46vw, 620px);
+    background:radial-gradient(circle, #00C8FF 0%, rgba(0, 200, 255, 0) 70%);
+    top:5%;right:12%;
+    animation:driftOrb5 19s infinite alternate ease-in-out;
+  }
+
+  @keyframes driftOrb1{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(14vw, 18vh, 0) scale(1.18) rotate(45deg); }
+    100%{ transform:translate3d(24vw, 6vh, 0) scale(0.92) rotate(90deg); }
+  }
+  @keyframes driftOrb2{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(-16vw, -12vh, 0) scale(1.15) rotate(-60deg); }
+    100%{ transform:translate3d(-26vw, 14vh, 0) scale(1.05) rotate(-120deg); }
+  }
+  @keyframes driftOrb3{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(18vw, -15vh, 0) scale(1.22) rotate(70deg); }
+    100%{ transform:translate3d(8vw, -24vh, 0) scale(0.95) rotate(140deg); }
+  }
+  @keyframes driftOrb4{
+    0%{ transform:translate3d(0, 0, 0) scale(1); }
+    50%{ transform:translate3d(18vw, 12vh, 0) scale(1.16); }
+    100%{ transform:translate3d(8vw, -16vh, 0) scale(0.9); }
+  }
+  @keyframes driftOrb5{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(-18vw, 20vh, 0) scale(1.2) rotate(-50deg); }
+    100%{ transform:translate3d(-8vw, 32vh, 0) scale(0.94) rotate(-100deg); }
+  }
 
   /* ========================================================
      CHOREOGRAPHED INTRO
@@ -68,31 +154,12 @@
   #splash.out{opacity:0 !important;visibility:hidden !important;pointer-events:none !important}
   @keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
 
-  .splash-bg-photo{
-    position:absolute;inset:-20px;
-    background-color:#EBDCCF;
-    background-image:url('opening-couple.jpg'), url('images/opening-couple.jpg');
-    background-position:center 20%;
-    background-size:cover;
-    background-repeat:no-repeat;
-    filter:blur(3px) brightness(0.98) saturate(1.15);
-    transform:scale(1.04);
-    opacity:0.85;
-    z-index:1;
-  }
-
-  .splash-overlay{
-    position:absolute;inset:0;
-    background:radial-gradient(circle at 50% 48%, rgba(255,255,255,0.45) 0%, rgba(250,245,237,0.65) 60%, rgba(244,234,218,0.85) 100%);
-    z-index:2;
-  }
-
   .splash-amber-halo{
     position:absolute;
-    width:360px;height:360px;
+    width:380px;height:380px;
     border-radius:50%;
-    background:radial-gradient(circle, rgba(255, 122, 29, 0.35) 0%, rgba(255, 170, 0, 0.15) 45%, transparent 70%);
-    filter:blur(28px);
+    background:radial-gradient(circle, rgba(255, 122, 29, 0.38) 0%, rgba(255, 42, 122, 0.18) 45%, transparent 70%);
+    filter:blur(32px);
     pointer-events:none;
     z-index:3;
   }
@@ -197,8 +264,9 @@
      ======================================================== */
   header{
     position:fixed;top:0;left:0;right:0;z-index:50;
-    background:rgba(255, 248, 242, 0.92);
-    backdrop-filter:blur(14px);
+    background:rgba(255, 249, 245, 0.85);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
     border-bottom:1px solid var(--line-subtle);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
@@ -221,7 +289,7 @@
   .pill{
     border:1.5px solid var(--orange);color:var(--orange);
     border-radius:50px;padding:8px 24px;font-size:.92rem;
-    background:#FFFFFF;cursor:pointer;font-family:var(--sans);
+    background:rgba(255, 255, 255, 0.85);cursor:pointer;font-family:var(--sans);
     font-weight:600;transition:all .2s ease;
     box-shadow:0 4px 14px rgba(255,90,0,.12);
   }
@@ -256,67 +324,20 @@
   @keyframes btnSpectrumFlow{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
 
   /* ========================================================
-     HERO: DEEP BLURRED PHOTO WITH SMOOTH MOVEMENT ILLUSION
+     HERO: CLEAN, LIVING COLOR DISPLAY
      ======================================================== */
   .hero{
     position:relative;
-    min-height:92svh;
+    min-height:88svh;
     display:flex;
     align-items:center;
     padding:130px 0 80px;
-    overflow:hidden;
-    background:#FFF8F2;
+    background:transparent;
   }
-
-  /* Deeply blurred background with subtle floating movement illusion */
-  .hero-photo{
-    position:absolute;
-    inset:-35px;
-    background-color:#EFE2D6;
-    background-image:url('opening-couple.jpg'), url('images/opening-couple.jpg');
-    background-size:cover;
-    background-position:center 12%;
-    background-repeat:no-repeat;
-    filter:blur(10px) brightness(0.98) saturate(1.2);
-    opacity:0.86;
-    z-index:1;
-    will-change:transform;
-    animation:heroMotionIllusion 18s ease-in-out infinite alternate;
-  }
-
-  @keyframes heroMotionIllusion{
-    0%{ transform:scale(1.06) translate3d(0, 0, 0); }
-    50%{ transform:scale(1.15) translate3d(-10px, -8px, 0); }
-    100%{ transform:scale(1.09) translate3d(10px, 6px, 0); }
-  }
-
-  .hero-vignette{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-      180deg,
-      rgba(255, 248, 242, 0.35) 0%,
-      rgba(255, 248, 242, 0.22) 30%,
-      rgba(255, 241, 230, 0.75) 75%,
-      #FFF1E6 100%
-    );
-    z-index:2;
-    pointer-events:none;
-  }
-
-  .hero::after{
-    content:"";
-    position:absolute;
-    left:0;right:0;bottom:0;
-    height:20%;
-    background:linear-gradient(transparent, #FFF1E6);
-    z-index:2;
-  }
-
   .hero-inner{
     position:relative;
     z-index:3;
-    max-width:620px;
+    max-width:640px;
   }
 
   .logo-xl{
@@ -342,7 +363,6 @@
     margin:14px 0 30px;
     padding-left:.32em;
     text-transform:uppercase;
-    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
   }
   .hero h1{
     font-family:var(--sans);
@@ -351,32 +371,31 @@
     margin-bottom:16px;
     color:var(--text-primary);
     line-height:1.25;
-    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.85);
   }
   .hero p.lead{
     margin-bottom:34px;
     font-size:1.08rem;
     max-width:520px;
     color:var(--muted);
-    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.8);
   }
   .hero-cta-group{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:34px}
 
-  .trust-proof{display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--muted);text-shadow: 0 1px 8px rgba(255, 255, 255, 0.8);}
+  .trust-proof{display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--muted);}
   .avatar-cluster{display:flex}
   .avatar-cluster img{width:34px;height:34px;border-radius:50%;border:2px solid #FFFFFF;margin-left:-8px;object-fit:cover}
   .avatar-cluster img:first-child{margin-left:0}
 
   @media(max-width:900px){
-    .hero{padding-top:120px;padding-bottom:60px;min-height:auto}
-    .hero-photo{background-position:center 4%;}
+    .hero{padding-top:120px;padding-bottom:50px;min-height:auto}
   }
 
   /* ========================================================
-     FEATURE STRIP
+     FEATURE STRIP (FROSTED GLASS ON MOVING COLORS)
      ======================================================== */
   .strip{
-    background:linear-gradient(180deg, #FFF1E6 0%, #FFEBE0 100%);
+    background:rgba(255, 255, 255, 0.45);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
     border-top:1px solid var(--line-subtle);
     border-bottom:1px solid var(--line-subtle);
     padding:38px 0;
@@ -389,12 +408,12 @@
   @media(max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr;row-gap:26px}.st:nth-child(3){border-left:none}}
 
   /* ========================================================
-     FIND YOUR PERSON SECTION (EXACT RESTORED LAYOUT)
+     FIND YOUR PERSON SECTION
      ======================================================== */
   .find{
-    background:linear-gradient(180deg, #FFEBE0 0%, #FDEBF4 50%, #F8E7F8 100%);
     padding-bottom:0;
     overflow:hidden;
+    background:transparent;
   }
   .split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:45px;align-items:center}
   @media(max-width:860px){.split{grid-template-columns:1fr;gap:35px}}
@@ -421,7 +440,7 @@
     font-weight:700;
   }
 
-  /* Profile Cards with high-resolution portraits */
+  /* Profile Cards in Find section */
   .pcards{
     position:relative;
     height:460px;
@@ -500,21 +519,15 @@
   @keyframes discoBeat{ 0%{ opacity: 0.15; } 100%{ opacity: 1; filter: drop-shadow(0 0 8px currentColor); } }
 
   /* Other Sections */
-  #how{ background:linear-gradient(180deg, #F8E7F8 0%, #F0ECFA 100%); }
-  #verification{ background:linear-gradient(180deg, #F0ECFA 0%, #FFF7ED 100%); border-top:1px solid var(--line-subtle); border-bottom:1px solid var(--line-subtle); }
-  #intentions{ background:linear-gradient(180deg, #FFF7ED 0%, #FBF1F8 100%); }
-  #dates{ background:linear-gradient(180deg, #FBF1F8 0%, #EFEFFA 100%); }
-  #safety{ background:linear-gradient(180deg, #EFEFFA 0%, #FFF3EB 100%); }
-  #faq{ background:linear-gradient(180deg, #FFF3EB 0%, #F6F1F8 100%); }
-
   .grid{display:grid;gap:24px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
   .card{
-    background:rgba(255, 255, 255, 0.9);
-    backdrop-filter:blur(10px);
+    background:rgba(255, 255, 255, 0.76);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
     border:1px solid rgba(255, 255, 255, 0.95);
     border-radius:24px;
     padding:34px;
-    box-shadow:0 10px 30px rgba(40,20,30,.05);
+    box-shadow:0 12px 35px rgba(180, 80, 50, 0.06);
     transition:transform .3s,border-color .3s,box-shadow .3s;
     text-align:left;
   }
@@ -529,16 +542,21 @@
   .badges{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0;justify-content:center}
   .badge{
     border:1.5px solid var(--line);border-radius:50px;padding:11px 22px;
-    font-size:.9rem;font-weight:600;color:var(--orange);background:rgba(255, 255, 255, 0.9);
+    font-size:.9rem;font-weight:600;color:var(--orange);background:rgba(255, 255, 255, 0.85);
+    box-shadow:0 4px 14px rgba(255, 90, 0, 0.06);
   }
   .badge::before{content:"✓ ";font-weight:700}
   .note{margin:22px auto 0;font-size:.9rem;color:var(--muted);border-left:3px solid var(--orange);padding-left:14px;max-width:640px;text-align:left}
 
   .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
-  .chip{border:1px solid var(--line-subtle);background:#FFFFFF;border-radius:50px;padding:12px 24px;font-size:.95rem;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.03)}
+  .chip{border:1px solid var(--line-subtle);background:rgba(255, 255, 255, 0.85);border-radius:50px;padding:12px 24px;font-size:.95rem;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.03)}
 
   details{
-    background:rgba(255, 255, 255, 0.88);border:1px solid rgba(255, 255, 255, 0.95);border-radius:18px;
+    background:rgba(255, 255, 255, 0.78);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255, 255, 255, 0.95);
+    border-radius:18px;
     padding:18px 22px;margin-top:14px;box-shadow:0 4px 18px rgba(40,20,30,.04);text-align:left;
   }
   summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px;color:var(--text-primary)}
@@ -549,7 +567,7 @@
 
   .final{
     text-align:center;
-    background:linear-gradient(180deg, #FFF3EB 0%, #2A1428 50%, #120815 100%);
+    background:linear-gradient(180deg, rgba(255,243,235,0.4) 0%, #2A1428 55%, #120815 100%);
     color:#FFFFFF;
     padding:110px 0 90px;
   }
@@ -568,10 +586,17 @@
 </head>
 <body>
 
+<!-- LIVING ANIMATED MULTICOLOR AURORA BACKGROUND -->
+<div class="living-bg" aria-hidden="true">
+  <div class="aurora-orb orb-1"></div>
+  <div class="aurora-orb orb-2"></div>
+  <div class="aurora-orb orb-3"></div>
+  <div class="aurora-orb orb-4"></div>
+  <div class="aurora-orb orb-5"></div>
+</div>
+
 <!-- CHOREOGRAPHED INTRO -->
 <div id="splash" aria-hidden="true" onclick="dismissSplash()">
-  <div class="splash-bg-photo"></div>
-  <div class="splash-overlay"></div>
   <div class="splash-amber-halo"></div>
 
   <div class="splash-content">
@@ -604,11 +629,8 @@
 </header>
 
 <main id="top">
-  <!-- 1. HERO SECTION -->
+  <!-- 1. HERO SECTION (LIVING COLORS - NO PHOTO) -->
   <section class="hero">
-    <div class="hero-photo" role="img" aria-label="A happy couple sharing an intentional moment"></div>
-    <div class="hero-vignette"></div>
-
     <div class="wrap hero-inner">
       <div class="logo-xl">YARN</div>
       <div class="tagline">Meet with Intention.</div>
@@ -640,7 +662,7 @@
     </div>
   </div>
 
-  <!-- 3. FIND YOUR PERSON (RESTORED WITH WORKING CARDS) -->
+  <!-- 3. FIND YOUR PERSON (EXACT RESTORED SECTION) -->
   <section class="find" id="find">
     <div class="wrap split">
       <div>
