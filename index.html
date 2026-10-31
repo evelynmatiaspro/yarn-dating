@@ -53,10 +53,10 @@
   h2{font-size:clamp(2.2rem,5.5vw,3.4rem);margin-bottom:16px}
   .lead{color:var(--muted);max-width:580px;font-size:1.06rem;line-height:1.7}
   .center{text-align:center}.center .lead{margin:0 auto}
-  svg.i{width:26px;height:26px;fill:none;stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  svg.i{width:24px;height:24px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   /* ========================================================
-     CINEMATIC SPLASH INTRO (CLEAR COUPLE BG)
+     CHOREOGRAPHED INTRO (SLOW-MO ZOOM & INSTANT HANDOVER)
      ======================================================== */
   #splash{
     position:fixed;inset:0;z-index:999;
@@ -69,10 +69,10 @@
   @keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
 
   .splash-bg-photo{
-    position:absolute;inset:-10px;
+    position:absolute;inset:-20px;
     background-color:#EBDCCF;
     background-image:url('opening-couple.jpg'), url('images/opening-couple.jpg');
-    background-position:center 15%;
+    background-position:center 20%;
     background-size:cover;
     background-repeat:no-repeat;
     filter:blur(3px) brightness(0.98) saturate(1.15);
@@ -267,7 +267,7 @@
   @keyframes btnSpectrumFlow{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
 
   /* ========================================================
-     HERO SECTION: CLEAR, BEAUTIFULLY VISIBLE COUPLE
+     HERO SECTION
      ======================================================== */
   .hero{
     position:relative;
@@ -279,7 +279,6 @@
     background:#FFF8F2;
   }
 
-  /* The Couple Photo is now clearly visible */
   .hero-photo{
     position:absolute;
     inset:0;
@@ -289,11 +288,10 @@
     background-position:center 10%;
     background-repeat:no-repeat;
     filter:blur(1px) brightness(0.98) saturate(1.15);
-    opacity:0.88; /* Highly visible! */
+    opacity:0.88;
     z-index:1;
   }
 
-  /* Translucent peach tint ensuring text is 100% readable over their shirts */
   .hero-vignette{
     position:absolute;
     inset:0;
@@ -425,7 +423,7 @@
   @media(max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr;row-gap:26px}.st:nth-child(3){border-left:none}}
 
   /* ========================================================
-     FIND SECTION & INTERACTIVE INTENTIONS SELECTOR
+     FIND YOUR PERSON SECTION (EXACTLY AS SCREENSHOT)
      ======================================================== */
   .find{
     background:linear-gradient(180deg, #FFEBE0 0%, #FDEBF4 50%, #F8E7F8 100%);
@@ -434,33 +432,28 @@
   }
   .split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
   @media(max-width:860px){.split{grid-template-columns:1fr}}
-  .feat{display:flex;gap:16px;align-items:flex-start;margin-top:22px}
-  .feat b{display:block;font-weight:600;font-size:1.02rem;color:var(--text-primary)}
-  .feat span{font-size:.92rem;color:var(--muted)}
 
-  /* Interactive Intent Card */
-  .interactive-intent-box{
-    background:#FFFFFF;
-    border-radius:28px;
-    padding:36px;
-    border:1px solid rgba(255,90,0,.22);
-    box-shadow:0 18px 45px rgba(255,90,0,.08);
+  .feat{display:flex;gap:16px;align-items:flex-start;margin-top:24px}
+  .feat svg.i{flex-shrink:0;margin-top:2px}
+  .feat b{display:block;font-weight:600;font-size:1.05rem;color:var(--text-primary);margin-bottom:2px}
+  .feat span{font-size:.95rem;color:var(--muted);line-height:1.55}
+
+  .script{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(2.3rem, 5.8vw, 3.4rem);
+    color:var(--orange);
+    line-height:1.15;
+    margin-top:42px;
   }
-  .intent-box-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-  .intent-list{display:flex;flex-direction:column;gap:10px}
-  .intent-row{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 18px;border-radius:14px;background:#FFF8F2;
-    border:1.5px solid transparent;cursor:pointer;font-weight:600;font-size:.95rem;
-    transition:all .2s ease;
+  .small{
+    letter-spacing:.24em;
+    font-size:.76rem;
+    color:var(--muted);
+    margin-top:14px;
+    text-transform:uppercase;
+    font-weight:700;
   }
-  .intent-row:hover, .intent-row.active{
-    background:#FFFFFF;border-color:var(--orange);color:var(--orange);
-    box-shadow:0 4px 16px rgba(255,90,0,.14);
-    transform:translateX(4px);
-  }
-  .intent-check{width:22px;height:22px;border-radius:50%;border:1.5px solid #C5B5A8;display:flex;align-items:center;justify-content:center;font-size:.8rem}
-  .intent-row.active .intent-check{background:var(--orange);border-color:var(--orange);color:#FFFFFF}
 
   /* Skyline */
   .skyline{display:block;width:100%;height:clamp(180px,30vw,320px);margin-top:40px}
@@ -470,9 +463,10 @@
   /* Other Sections */
   #how{ background:linear-gradient(180deg, #F8E7F8 0%, #F0ECFA 100%); }
   #verification{ background:linear-gradient(180deg, #F0ECFA 0%, #FFF7ED 100%); border-top:1px solid var(--line-subtle); border-bottom:1px solid var(--line-subtle); }
-  #dates{ background:linear-gradient(180deg, #FFF7ED 0%, #FBF1F8 100%); }
-  #safety{ background:linear-gradient(180deg, #FBF1F8 0%, #EFEFFA 100%); }
-  #faq{ background:linear-gradient(180deg, #EFEFFA 0%, #FFF3EB 100%); }
+  #intentions{ background:linear-gradient(180deg, #FFF7ED 0%, #FBF1F8 100%); }
+  #dates{ background:linear-gradient(180deg, #FBF1F8 0%, #EFEFFA 100%); }
+  #safety{ background:linear-gradient(180deg, #EFEFFA 0%, #FFF3EB 100%); }
+  #faq{ background:linear-gradient(180deg, #FFF3EB 0%, #F6F1F8 100%); }
 
   .grid{display:grid;gap:24px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
   .card{
@@ -500,6 +494,9 @@
   }
   .badge::before{content:"✓ ";font-weight:700}
   .note{margin:22px auto 0;font-size:.9rem;color:var(--muted);border-left:3px solid var(--orange);padding-left:14px;max-width:640px;text-align:left}
+
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+  .chip{border:1px solid var(--line-subtle);background:#FFFFFF;border-radius:50px;padding:12px 24px;font-size:.95rem;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.03)}
 
   details{
     background:rgba(255, 255, 255, 0.88);border:1px solid rgba(255, 255, 255, 0.95);border-radius:18px;
@@ -555,7 +552,7 @@
     <a href="#top" class="brand">YARN</a>
     <nav class="links" id="links">
       <a href="#top" class="on">Home</a>
-      <a href="#discover">Discover</a>
+      <a href="#find">Discover</a>
       <a href="#how">About</a>
       <a href="#" onclick="soon('Stories');return false;">Stories</a>
       <a href="#safety">Safety</a>
@@ -632,58 +629,58 @@
     </div>
   </div>
 
-  <!-- 3. FIND SECTION -->
-  <section class="find" id="discover">
+  <!-- 3. FIND YOUR PERSON (EXACT SECTION RESTORED) -->
+  <section class="find" id="find">
     <div class="wrap split">
       <div>
-        <div class="eyebrow">Clear Intentions First</div>
-        <h2>Real People.<br>Real Connections.</h2>
+        <div class="eyebrow">FIND YOUR PERSON</div>
+        <h2>REAL PEOPLE.<br>REAL CONNECTIONS.</h2>
         <p class="lead">Meet ambitious, kind and genuine people who are serious about love, growth and building a future together.</p>
         
         <div class="feat">
           <svg class="i" viewBox="0 0 24 24"><path d="M12 20s-8-5-8-11a4.5 4.5 0 018-2.5A4.5 4.5 0 0120 9c0 6-8 11-8 11z"/></svg>
-          <div><b>Values-First Matching</b><span>Filter connections by core life values, timeline, and shared lifestyle.</span></div>
+          <div><b>Smart Matching</b><span>Based on your goals, values and interests.</span></div>
         </div>
 
         <div class="feat">
           <svg class="i" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-          <div><b>Verified Profiles Only</b><span>Identity, education and career checks, shown only once completed.</span></div>
+          <div><b>Verified Profiles</b><span>Identity, education and career checks, shown only once completed.</span></div>
         </div>
 
         <div class="feat">
           <svg class="i" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
-          <div><b>Your Privacy Stays First</b><span>Your personal identity documents stay 100% confidential.</span></div>
+          <div><b>Your Privacy Matters</b><span>Your documents and data stay private.</span></div>
         </div>
+
+        <div class="script">Better people.<br>Bigger possibilities.</div>
+        <div class="small">YARN — MEET WITH INTENTION.</div>
       </div>
 
       <div>
-        <div class="interactive-intent-box">
-          <div class="intent-box-header">
-            <h4>Select Relationship Goal</h4>
-            <span style="font-size:0.8rem;font-weight:700;color:var(--orange)">Transparent</span>
+        <div class="pcards">
+          <div class="pc pc1">
+            <div class="ph"></div>
+            <div class="info">
+              <div class="nm">Amara, 24 <span class="tick">✓</span></div>
+              <div class="meta">Lagos &nbsp;|&nbsp; Marketing Executive</div>
+              <div class="tags"><i>Ambitious</i><i>Travel</i><i>Good Food</i></div>
+              <div class="acts" aria-hidden="true"><i>✕</i><i class="big">♥</i><i>★</i></div>
+            </div>
           </div>
-          <div class="intent-list">
-            <div class="intent-row active">
-              <span>💍 Marriage-minded dating</span>
-              <span class="intent-check">✓</span>
-            </div>
-            <div class="intent-row">
-              <span>❤️ Serious, committed relationship</span>
-              <span class="intent-check"></span>
-            </div>
-            <div class="intent-row">
-              <span>✨ Dedicated partner for life</span>
-              <span class="intent-check"></span>
-            </div>
-            <div class="intent-row">
-              <span>☕ Dating with intentional curiosity</span>
-              <span class="intent-check"></span>
+          <div class="pc pc2">
+            <div class="ph"></div>
+            <div class="info">
+              <div class="nm">Daniel, 29 <span class="tick">✓</span></div>
+              <div class="meta">Lagos &nbsp;|&nbsp; Business Owner</div>
+              <div class="tags"><i>Travel</i><i>Fitness</i><i>Growth</i></div>
+              <div class="acts" aria-hidden="true"><i>✕</i><i class="big">♥</i><i>★</i></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Skyline Graphic -->
     <svg class="skyline" id="skyline" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-label="Skyline over water">
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8E7F8" stop-opacity="0"/><stop offset="1" stop-color="#FF5A00" stop-opacity=".22"/></linearGradient>
@@ -706,18 +703,18 @@
       <div class="grid">
         <div class="card">
           <div class="num">01</div>
-          <h3>Craft Your Honest Profile</h3>
-          <p>Highlight your passions, your non-negotiables, and what a meaningful life together looks like for you.</p>
+          <h3>Create your profile</h3>
+          <p>Share who you are, what you do and what you value. You choose which optional details to show.</p>
         </div>
         <div class="card">
           <div class="num">02</div>
-          <h3>State Your Intention</h3>
-          <p>Select your relationship goal. You only encounter members whose vision aligns with your timeline.</p>
+          <h3>Choose your intention</h3>
+          <p>Tell us what you are looking for, from a serious relationship to marriage-minded dating.</p>
         </div>
         <div class="card">
           <div class="num">03</div>
-          <h3>Plan the Real-Life Date</h3>
-          <p>Use our built-in date coordinator to smoothly schedule your first coffee, dinner, or museum walk.</p>
+          <h3>Match and meet</h3>
+          <p>When interest is mutual you can chat and plan a real-life date in a public place.</p>
         </div>
       </div>
     </div>
@@ -728,21 +725,38 @@
     <div class="wrap center">
       <div class="eyebrow">Trust You Can See</div>
       <h2>Verified profiles. Zero catfishes.</h2>
-      <p class="lead">Badges are awarded only after strict verification. Your personal IDs and private documents remain 100% confidential and are never shared with anyone.</p>
+      <p class="lead">Each badge shows one specific check that was actually completed. Badges are never given for claims alone, and your documents are never shown to other members.</p>
       
       <div class="badges">
-        <span class="badge">Identity Confirmed</span>
-        <span class="badge">Professional & Career Verified</span>
+        <span class="badge">Identity Verified</span>
         <span class="badge">Education Verified</span>
-        <span class="badge">Business Owner Verified</span>
-        <span class="badge">Video Selfie Checked</span>
+        <span class="badge">Career Verified</span>
+        <span class="badge">Business Verified</span>
+        <span class="badge">Financial Stability Verified</span>
+        <span class="badge">Background Check Completed</span>
       </div>
 
-      <p class="note"><b>Our Community Guarantee:</b> Verification provides an added layer of honesty. Whether you are a student, young professional, or established business owner, YARN provides an accessible and fair verification path.</p>
+      <p class="note"><b>Our Community Guarantee:</b> Verification helps but cannot remove every risk of meeting people. Students, recent graduates, professionals and business owners each have a fair way to verify.</p>
     </div>
   </section>
 
-  <!-- 6. DATES -->
+  <!-- 6. INTENTIONS -->
+  <section id="intentions">
+    <div class="wrap center">
+      <div class="eyebrow">Relationship intentions</div>
+      <h2>Say what you are looking for.</h2>
+      <p class="lead">Being honest about intent saves everyone's time.</p>
+      <div class="chips">
+        <span class="chip">A serious relationship</span>
+        <span class="chip">A potential life partner</span>
+        <span class="chip">Dating to find a committed relationship</span>
+        <span class="chip">Getting to know someone first</span>
+        <span class="chip">Marriage-minded dating</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. DATES -->
   <section id="dates">
     <div class="wrap center">
       <div class="eyebrow">Real-Life Date Planning</div>
@@ -752,26 +766,26 @@
       <div class="grid">
         <div class="card">
           <h3>Propose & Confirm</h3>
-          <p>Accept, decline or reschedule with ease without exchanging numbers prematurely.</p>
+          <p>Accept, decline or reschedule with ease.</p>
         </div>
         <div class="card">
           <h3>Public Places First</h3>
-          <p>Our date planner recommends vetted, bustling cafes and restaurants for every first meet-up.</p>
+          <p>We encourage first dates in busy public spots.</p>
         </div>
         <div class="card">
           <h3>Location Stays Private</h3>
-          <p>Your precise GPS location is never shared. We only show broad neighborhood vicinity.</p>
+          <p>Your precise location is never shared without your permission.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 7. SAFETY -->
+  <!-- 8. SAFETY -->
   <section id="safety">
     <div class="wrap center">
       <div class="eyebrow">Privacy & Safety</div>
-      <h2>Your comfort is never secondary.</h2>
-      <p class="lead">We've built proactive protections directly into the YARN platform so you can explore romance with full peace of mind.</p>
+      <h2>Built to protect you.</h2>
+      <p class="lead">Safety and respect are baked into every layer of YARN.</p>
       
       <div class="grid">
         <div class="card">
@@ -780,53 +794,53 @@
         </div>
         <div class="card">
           <h3>Private by Design</h3>
-          <p>No public home addresses, ID numbers or live locations. Verification documents stay encrypted.</p>
+          <p>No public home addresses, ID numbers or live locations. Verification documents stay private.</p>
         </div>
         <div class="card">
-          <h3>Active Human Moderation</h3>
-          <p>Reports of harassment, scams and fake profiles are reviewed by trained staff with zero tolerance.</p>
+          <h3>Active Moderation</h3>
+          <p>Reports of harassment, scams and fake profiles are reviewed by trained staff.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. FAQ -->
+  <!-- 9. FAQ -->
   <section id="faq">
     <div class="wrap center">
-      <div class="eyebrow">Got Questions?</div>
-      <h2>Good questions. Honest answers.</h2>
+      <div class="eyebrow">Frequently asked questions</div>
+      <h2>Good questions.</h2>
       
       <div class="faq">
         <details>
           <summary>Who can join YARN?</summary>
-          <p>Adults aged 18 and above who want genuine, intentional relationships. Whether you're looking for a committed relationship or marriage, YARN is for people who value honesty.</p>
+          <p>Adults aged 18 and above. Age is confirmed through identity verification.</p>
         </details>
         <details>
-          <summary>What makes YARN different from Tinder or Bumble?</summary>
-          <p>Unlike rapid swiping apps designed to keep you addicted, YARN centers around intent transparency, multi-tiered profile verification, and structured limits that prioritize deep compatibility over endless superficial swipes.</p>
+          <summary>Do I need to be wealthy or established to join?</summary>
+          <p>No. Verification is optional and has pathways for students, graduates, employees and business owners. Income does not decide your worth.</p>
         </details>
         <details>
-          <summary>Are my verification documents visible to other members?</summary>
-          <p>Never. Others only see the verified badge checkmark on your profile. Your identification documents are encrypted and kept strictly confidential.</p>
+          <summary>Are my documents visible to other members?</summary>
+          <p>Never. Others only see which verification badges you have earned.</p>
         </details>
         <details>
           <summary>Does verification guarantee someone is safe?</summary>
-          <p>Verification reduces risk significantly by eliminating catfishes, but cannot remove every human risk. We always encourage first dates in busy public spaces.</p>
+          <p>No. It reduces risk but cannot remove it. We encourage first dates in public places.</p>
         </details>
         <details>
-          <summary>Is YARN free to join?</summary>
-          <p>Creating your profile, completing basic verification, and meeting matches is free. Premium features that enhance your experience will always be transparent before any payment.</p>
+          <summary>Is YARN free?</summary>
+          <p>Pricing has not been decided yet. We will be clear about any costs before you pay for anything.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- 9. FINAL CTA -->
+  <!-- 10. FINAL CTA -->
   <section id="join" class="final">
     <div class="wrap">
       <div class="eyebrow">Ready When You Are</div>
       <h2>Meet with Intention.</h2>
-      <p class="lead">Join thousands of intentional daters who have traded endless small talk for authentic romance.</p>
+      <p class="lead">Join people who want something real, at their own pace.</p>
       <button class="btn btn-gold" onclick="soon('Sign-up')">Let's YARN <span>→</span></button>
     </div>
   </section>
@@ -839,19 +853,20 @@
       <p>Meet with Intention.</p>
     </div>
     <nav>
-      <a href="#discover">Discover</a>
-      <a href="#how">How it Works</a>
-      <a href="#verification">Verification</a>
+      <a href="#top">Home</a>
+      <a href="#find">Discover</a>
+      <a href="#how">About</a>
       <a href="#safety">Safety</a>
       <a href="#faq">FAQ</a>
     </nav>
   </div>
   <div class="wrap fine">
-    &copy; 2026 YARN Dating Platform. All rights reserved. Built for genuine connection • No catfishes, no games.
+    &copy; 2026 YARN. All rights reserved.
   </div>
 </footer>
 
 <script>
+  // Centre the Y dynamically for the smooth zoom on any phone screen
   function centreY() {
     const splash = document.getElementById('splash');
     const slot = document.querySelector('.y-slot');
@@ -867,6 +882,17 @@
   window.addEventListener('load', centreY);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(centreY);
 
+  // 3 TYPEWRITER-STYLE SHORT HAPTIC VIBRATIONS AS "ARN" WRITES ON DISPLAY
+  function triggerWritingHaptics() {
+    if ("vibrate" in navigator) {
+      // 3 short, typewriter-like taps: [vibrate, pause, vibrate, pause, vibrate]
+      navigator.vibrate([35, 55, 35, 55, 35]);
+    }
+  }
+
+  // Fires right when "ARN" slides out beside the "Y" (~1.2s into opening)
+  setTimeout(triggerWritingHaptics, 1250);
+
   function dismissSplash() {
     const splash = document.getElementById('splash');
     if (splash && !splash.classList.contains('out')) {
@@ -877,17 +903,6 @@
 
   setTimeout(dismissSplash, 5350);
 
-  document.querySelectorAll(".intent-row").forEach(function(row){
-    row.addEventListener("click", function(){
-      document.querySelectorAll(".intent-row").forEach(function(r){
-        r.classList.remove("active");
-        r.querySelector(".intent-check").textContent = "";
-      });
-      this.classList.add("active");
-      this.querySelector(".intent-check").textContent = "✓";
-    });
-  });
-
   function toggleMenu() {
     const links = document.getElementById('links');
     if (links) links.classList.toggle('open');
@@ -897,6 +912,7 @@
     alert(feature + " feature coming soon! YARN is actively in development.");
   }
 
+  // Skyline Generator
   (function buildCitySkyline() {
     const cityg = document.getElementById('cityg');
     if (!cityg) return;
