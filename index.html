@@ -56,15 +56,14 @@
   svg.i{width:26px;height:26px;fill:none;stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
   /* ========================================================
-     CINEMATIC SPLASH INTRO: SLOW-MO ZOOM + ZERO-DELAY TRANSITION
+     CINEMATIC SPLASH INTRO
      ======================================================== */
   #splash{
     position:fixed;inset:0;z-index:999;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:#FAF5ED;
     overflow:hidden;cursor:pointer;
-    /* Fades out seamlessly right as the Y reaches full screen expansion */
-    animation:splashOut 0.4s cubic-bezier(0.25, 1, 0.5, 1) 5.3s forwards;
+    animation:splashOut 0.45s cubic-bezier(0.25, 1, 0.5, 1) 5.25s forwards;
   }
   #splash.out{opacity:0 !important;visibility:hidden !important;pointer-events:none !important}
   @keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
@@ -119,7 +118,6 @@
     letter-spacing:0.02em;
   }
 
-  /* 1. THE "Y" MONOGRAM: Enters, holds, and performs a graceful slow-motion pull-through */
   .y-slot{display:inline-block;position:relative}
   .y-char{
     display:inline-block;
@@ -135,57 +133,17 @@
   }
 
   @keyframes ySlowMoJourney{
-    0%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(0.08);
-      opacity:0;
-      filter:blur(14px);
-    }
-    18%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(1.05);
-      opacity:1;
-      filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45));
-    }
-    24%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(1);
-      opacity:1;
-      filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45));
-    }
-    /* Moves beside ARN while tagline is displayed */
-    36%, 56%{
-      transform:translate(0px, 0px) scale(1);
-      opacity:1;
-      filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45));
-    }
-    /* ARN dissolves away; Y glides back to center gracefully */
-    66%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(1.02);
-      opacity:1;
-      filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.55));
-    }
-    /* SLOW-MO ZOOM: Gentle, steady progressive expansion rather than a sudden rush */
-    75%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(1.55);
-      opacity:1;
-      filter:blur(1px) drop-shadow(0 6px 30px rgba(255,90,0,0.65));
-    }
-    86%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(5.4);
-      opacity:0.92;
-      filter:blur(5px) drop-shadow(0 0 60px rgba(255,42,122,0.85));
-    }
-    96%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(22);
-      opacity:0.25;
-      filter:blur(16px) drop-shadow(0 0 100px rgba(255,42,122,1));
-    }
-    100%{
-      transform:translate(var(--yx,0px), var(--yy,0px)) scale(32);
-      opacity:0;
-      filter:blur(24px);
-    }
+    0%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(0.08); opacity:0; filter:blur(14px); }
+    18%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(1.05); opacity:1; filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45)); }
+    24%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(1); opacity:1; filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45)); }
+    36%, 56%{ transform:translate(0px, 0px) scale(1); opacity:1; filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.45)); }
+    66%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(1.02); opacity:1; filter:blur(0px) drop-shadow(0 4px 22px rgba(255,90,0,0.55)); }
+    75%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(1.55); opacity:1; filter:blur(1px) drop-shadow(0 6px 30px rgba(255,90,0,0.65)); }
+    86%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(5.4); opacity:0.92; filter:blur(5px) drop-shadow(0 0 60px rgba(255,42,122,0.85)); }
+    96%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(22); opacity:0.25; filter:blur(16px) drop-shadow(0 0 100px rgba(255,42,122,1)); }
+    100%{ transform:translate(var(--yx,0px), var(--yy,0px)) scale(32); opacity:0; filter:blur(24px); }
   }
 
-  /* 2. "ARN" LETTERS: Enters softly, then dissipates smoothly before the Y zooms */
   .arn-chars{
     display:inline-block;
     background:var(--spectrum);
@@ -201,29 +159,12 @@
   }
 
   @keyframes arnWaterSplash{
-    0%, 18%{
-      opacity:0;
-      transform:translateX(-35px) scale(0.92);
-      filter:blur(10px);
-    }
-    36%, 54%{
-      opacity:1;
-      transform:translateX(0) scale(1);
-      filter:blur(0px);
-    }
-    64%{
-      opacity:0.3;
-      transform:translateX(25px) scale(1.1);
-      filter:blur(10px) drop-shadow(0 0 25px rgba(0,200,255,0.7));
-    }
-    70%, 100%{
-      opacity:0;
-      transform:translateX(45px) scale(0.85);
-      filter:blur(16px);
-    }
+    0%, 18%{ opacity:0; transform:translateX(-35px) scale(0.92); filter:blur(10px); }
+    36%, 54%{ opacity:1; transform:translateX(0) scale(1); filter:blur(0px); }
+    64%{ opacity:0.3; transform:translateX(25px) scale(1.1); filter:blur(10px) drop-shadow(0 0 25px rgba(0,200,255,0.7)); }
+    70%, 100%{ opacity:0; transform:translateX(45px) scale(0.85); filter:blur(16px); }
   }
 
-  /* 3. TAGLINE: Fluid entrance and dissolution */
   .tagline-anim{
     font-family:var(--sans);
     font-size:clamp(0.9rem, 2.8vw, 1.25rem);
@@ -239,26 +180,10 @@
   }
 
   @keyframes tagWaterSplash{
-    0%, 22%{
-      opacity:0;
-      transform:translateY(18px) scale(0.96);
-      filter:blur(6px);
-    }
-    36%, 52%{
-      opacity:1;
-      transform:translateY(0) scale(1);
-      filter:blur(0px);
-    }
-    63%{
-      opacity:0.25;
-      transform:translateY(-8px) scale(1.05);
-      filter:blur(8px);
-    }
-    70%, 100%{
-      opacity:0;
-      transform:translateY(-18px) scale(0.9);
-      filter:blur(14px);
-    }
+    0%, 22%{ opacity:0; transform:translateY(18px) scale(0.96); filter:blur(6px); }
+    36%, 52%{ opacity:1; transform:translateY(0) scale(1); filter:blur(0px); }
+    63%{ opacity:0.25; transform:translateY(-8px) scale(1.05); filter:blur(8px); }
+    70%, 100%{ opacity:0; transform:translateY(-18px) scale(0.9); filter:blur(14px); }
   }
 
   #splash .skip{
@@ -342,7 +267,7 @@
   @keyframes btnSpectrumFlow{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
 
   /* ========================================================
-     HERO SECTION
+     HERO SECTION: BLURRED MATCHED COUPLE BACKGROUND
      ======================================================== */
   .hero{
     position:relative;
@@ -351,33 +276,55 @@
     align-items:center;
     padding:120px 0 85px;
     overflow:hidden;
-    background:
-      radial-gradient(circle at 85% 25%, rgba(255,106,0,.22) 0%, transparent 52%),
-      radial-gradient(circle at 15% 75%, rgba(255,42,122,.15) 0%, transparent 48%),
-      linear-gradient(180deg, #FFF8F2 0%, #FFF1E6 100%);
+    background:#FFF8F2;
   }
+
+  /* The Blurred Couple Photo spanning the entire background */
+  .hero-photo{
+    position:absolute;
+    inset:-20px; /* Extends past edges so blur does not create white lines */
+    background-color:#EFE2D6;
+    background-image:url('images/opening-couple.jpg');
+    background-size:cover;
+    background-position:center 15%;
+    background-repeat:no-repeat;
+    filter:blur(8px) brightness(0.96) saturate(1.15);
+    transform:scale(1.06);
+    opacity:0.42; /* Soft, elegant, non-distracting presence */
+    z-index:1;
+  }
+
+  /* Peach & Alabaster Gradient Vignette ensuring perfect text contrast */
+  .hero-vignette{
+    position:absolute;
+    inset:0;
+    background:radial-gradient(
+      circle at 50% 35%,
+      rgba(255, 248, 242, 0.72) 0%,
+      rgba(255, 241, 230, 0.88) 60%,
+      #FFF1E6 100%
+    );
+    z-index:2;
+    pointer-events:none;
+  }
+
+  .hero::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:25%;
+    background:linear-gradient(transparent, #FFF1E6);
+    z-index:2;
+  }
+
+  .hero-inner{position:relative;z-index:3}
+
   .hero-grid{
     display:grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap:50px;
     align-items:center;
   }
-  .hero-photo{
-    position:absolute;top:0;right:0;bottom:0;width:66%;
-    background-color:#EFE2D6;
-    background-image:
-      radial-gradient(circle at 60% 40%, rgba(255,106,0,.22), transparent 60%),
-      url('images/opening-couple.jpg'),
-      url('images/hero.jpg');
-    background-size:cover;
-    background-position:center 20%;
-    background-repeat:no-repeat;
-    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 45%);
-    mask-image:linear-gradient(to right,transparent 0,#000 45%);
-    opacity:0.88;
-  }
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(transparent, #FFF1E6)}
-  .hero-inner{position:relative;z-index:2}
 
   .logo-xl{
     font-family:var(--font-authority);
@@ -441,9 +388,9 @@
   @keyframes fl2{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(3deg) translateY(-14px)}}
 
   @media(max-width:900px){
-    .hero{padding-top:280px}
+    .hero{padding-top:140px;align-items:flex-start}
     .hero-grid{grid-template-columns:1fr;gap:40px}
-    .hero-photo{width:100%;height:58%;bottom:auto;top:60px;-webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent);mask-image:linear-gradient(to bottom,#000 45%,transparent);opacity:0.75}
+    .hero-photo{opacity:0.35}
   }
 
   /* ========================================================
@@ -596,10 +543,9 @@
     <nav class="links" id="links">
       <a href="#top" class="on">Home</a>
       <a href="#discover">Discover</a>
-      <a href="#how">How it Works</a>
-      <a href="#verification">Verification</a>
+      <a href="#how">About</a>
+      <a href="#" onclick="soon('Stories');return false;">Stories</a>
       <a href="#safety">Safety</a>
-      <a href="#faq">FAQ</a>
     </nav>
     <div class="right">
       <button class="pill" onclick="soon('Sign-up')">Sign Up</button>
@@ -611,7 +557,10 @@
 <main id="top">
   <!-- 1. HERO SECTION -->
   <section class="hero">
-    <div class="hero-photo" role="img" aria-label="A couple sharing an evening together"></div>
+    <!-- Blurred Matched Couple Photo & Color Vignette -->
+    <div class="hero-photo" role="img" aria-label="A happy couple sharing an intentional moment"></div>
+    <div class="hero-vignette"></div>
+
     <div class="wrap hero-inner">
       <div class="hero-grid">
         <div>
@@ -894,7 +843,6 @@
 </footer>
 
 <script>
-  // Dynamically centers the Y monogram for the slow-motion zoom on any screen size
   function centreY() {
     const splash = document.getElementById('splash');
     const slot = document.querySelector('.y-slot');
@@ -910,7 +858,6 @@
   window.addEventListener('load', centreY);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(centreY);
 
-  // Dismisses the splash overlay cleanly and removes it from memory
   function dismissSplash() {
     const splash = document.getElementById('splash');
     if (splash && !splash.classList.contains('out')) {
@@ -919,10 +866,8 @@
     }
   }
 
-  // Auto-dismisses at the exact moment the zoom finishes
   setTimeout(dismissSplash, 5350);
 
-  // Interactive Intentions selector
   document.querySelectorAll(".intent-row").forEach(function(row){
     row.addEventListener("click", function(){
       document.querySelectorAll(".intent-row").forEach(function(r){
@@ -943,7 +888,6 @@
     alert(feature + " feature coming soon! YARN is actively in development.");
   }
 
-  // Disco City Skyline Generator
   (function buildCitySkyline() {
     const cityg = document.getElementById('cityg');
     if (!cityg) return;
