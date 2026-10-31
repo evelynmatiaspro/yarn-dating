@@ -56,93 +56,7 @@
   svg.i{width:24px;height:24px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   /* ========================================================
-     LIVING ANIMATED MULTICOLOR AURORA BACKGROUND
-     ======================================================== */
-  .living-bg{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-    overflow:hidden;
-    background:#FFF9F5;
-  }
-  .aurora-orb{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(80px);
-    opacity:0.62;
-    will-change:transform;
-    mix-blend-mode:multiply;
-  }
-  /* Living Pink Orb */
-  .orb-1{
-    width:clamp(350px, 62vw, 750px);
-    height:clamp(350px, 62vw, 750px);
-    background:radial-gradient(circle, #FF2A7A 0%, rgba(255, 42, 122, 0) 70%);
-    top:-12%;left:-10%;
-    animation:driftOrb1 20s infinite alternate ease-in-out;
-  }
-  /* Living Orange / Amber Orb */
-  .orb-2{
-    width:clamp(360px, 68vw, 820px);
-    height:clamp(360px, 68vw, 820px);
-    background:radial-gradient(circle, #FF6A00 0%, rgba(255, 106, 0, 0) 70%);
-    top:20%;right:-18%;
-    animation:driftOrb2 23s infinite alternate ease-in-out;
-  }
-  /* Living Violet / Purple Orb */
-  .orb-3{
-    width:clamp(340px, 58vw, 720px);
-    height:clamp(340px, 58vw, 720px);
-    background:radial-gradient(circle, #9E47FF 0%, rgba(158, 71, 255, 0) 70%);
-    bottom:12%;left:5%;
-    animation:driftOrb3 25s infinite alternate ease-in-out;
-  }
-  /* Living Golden Honey Orb */
-  .orb-4{
-    width:clamp(320px, 52vw, 680px);
-    height:clamp(320px, 52vw, 680px);
-    background:radial-gradient(circle, #FFA826 0%, rgba(255, 168, 38, 0) 70%);
-    top:55%;left:-12%;
-    animation:driftOrb4 22s infinite alternate ease-in-out;
-  }
-  /* Living Sky Blue Orb */
-  .orb-5{
-    width:clamp(280px, 46vw, 620px);
-    height:clamp(280px, 46vw, 620px);
-    background:radial-gradient(circle, #00C8FF 0%, rgba(0, 200, 255, 0) 70%);
-    top:5%;right:12%;
-    animation:driftOrb5 19s infinite alternate ease-in-out;
-  }
-
-  @keyframes driftOrb1{
-    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
-    50%{ transform:translate3d(14vw, 18vh, 0) scale(1.18) rotate(45deg); }
-    100%{ transform:translate3d(24vw, 6vh, 0) scale(0.92) rotate(90deg); }
-  }
-  @keyframes driftOrb2{
-    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
-    50%{ transform:translate3d(-16vw, -12vh, 0) scale(1.15) rotate(-60deg); }
-    100%{ transform:translate3d(-26vw, 14vh, 0) scale(1.05) rotate(-120deg); }
-  }
-  @keyframes driftOrb3{
-    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
-    50%{ transform:translate3d(18vw, -15vh, 0) scale(1.22) rotate(70deg); }
-    100%{ transform:translate3d(8vw, -24vh, 0) scale(0.95) rotate(140deg); }
-  }
-  @keyframes driftOrb4{
-    0%{ transform:translate3d(0, 0, 0) scale(1); }
-    50%{ transform:translate3d(18vw, 12vh, 0) scale(1.16); }
-    100%{ transform:translate3d(8vw, -16vh, 0) scale(0.9); }
-  }
-  @keyframes driftOrb5{
-    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
-    50%{ transform:translate3d(-18vw, 20vh, 0) scale(1.2) rotate(-50deg); }
-    100%{ transform:translate3d(-8vw, 32vh, 0) scale(0.94) rotate(-100deg); }
-  }
-
-  /* ========================================================
-     CHOREOGRAPHED INTRO
+     OPENING SCREEN: RESTORED COUPLE BACKGROUND & SLOW-MO ZOOM
      ======================================================== */
   #splash{
     position:fixed;inset:0;z-index:999;
@@ -154,12 +68,32 @@
   #splash.out{opacity:0 !important;visibility:hidden !important;pointer-events:none !important}
   @keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
 
+  /* The Loved Couple Photo Restored in Intro */
+  .splash-bg-photo{
+    position:absolute;inset:-20px;
+    background-color:#EBDCCF;
+    background-image:url('opening-couple.jpg'), url('images/opening-couple.jpg');
+    background-position:center 20%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    filter:blur(3px) brightness(0.98) saturate(1.15);
+    transform:scale(1.04);
+    opacity:0.85;
+    z-index:1;
+  }
+
+  .splash-overlay{
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 48%, rgba(255,255,255,0.45) 0%, rgba(250,245,237,0.65) 60%, rgba(244,234,218,0.85) 100%);
+    z-index:2;
+  }
+
   .splash-amber-halo{
     position:absolute;
-    width:380px;height:380px;
+    width:360px;height:360px;
     border-radius:50%;
-    background:radial-gradient(circle, rgba(255, 122, 29, 0.38) 0%, rgba(255, 42, 122, 0.18) 45%, transparent 70%);
-    filter:blur(32px);
+    background:radial-gradient(circle, rgba(255, 122, 29, 0.35) 0%, rgba(255, 170, 0, 0.15) 45%, transparent 70%);
+    filter:blur(28px);
     pointer-events:none;
     z-index:3;
   }
@@ -257,6 +191,87 @@
     position:absolute;bottom:max(24px, env(safe-area-inset-bottom));
     font-size:0.75rem;letter-spacing:0.22em;text-transform:uppercase;color:#8E7A6E;font-weight:600;
     z-index:6;
+  }
+
+  /* ========================================================
+     LIVING ANIMATED MULTICOLOR AURORA (MAIN PAGE BACKGROUND)
+     ======================================================== */
+  .living-bg{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    overflow:hidden;
+    background:#FFF9F5;
+  }
+  .aurora-orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:0.62;
+    will-change:transform;
+    mix-blend-mode:multiply;
+  }
+  .orb-1{
+    width:clamp(350px, 62vw, 750px);
+    height:clamp(350px, 62vw, 750px);
+    background:radial-gradient(circle, #FF2A7A 0%, rgba(255, 42, 122, 0) 70%);
+    top:-12%;left:-10%;
+    animation:driftOrb1 20s infinite alternate ease-in-out;
+  }
+  .orb-2{
+    width:clamp(360px, 68vw, 820px);
+    height:clamp(360px, 68vw, 820px);
+    background:radial-gradient(circle, #FF6A00 0%, rgba(255, 106, 0, 0) 70%);
+    top:20%;right:-18%;
+    animation:driftOrb2 23s infinite alternate ease-in-out;
+  }
+  .orb-3{
+    width:clamp(340px, 58vw, 720px);
+    height:clamp(340px, 58vw, 720px);
+    background:radial-gradient(circle, #9E47FF 0%, rgba(158, 71, 255, 0) 70%);
+    bottom:12%;left:5%;
+    animation:driftOrb3 25s infinite alternate ease-in-out;
+  }
+  .orb-4{
+    width:clamp(320px, 52vw, 680px);
+    height:clamp(320px, 52vw, 680px);
+    background:radial-gradient(circle, #FFA826 0%, rgba(255, 168, 38, 0) 70%);
+    top:55%;left:-12%;
+    animation:driftOrb4 22s infinite alternate ease-in-out;
+  }
+  .orb-5{
+    width:clamp(280px, 46vw, 620px);
+    height:clamp(280px, 46vw, 620px);
+    background:radial-gradient(circle, #00C8FF 0%, rgba(0, 200, 255, 0) 70%);
+    top:5%;right:12%;
+    animation:driftOrb5 19s infinite alternate ease-in-out;
+  }
+
+  @keyframes driftOrb1{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(14vw, 18vh, 0) scale(1.18) rotate(45deg); }
+    100%{ transform:translate3d(24vw, 6vh, 0) scale(0.92) rotate(90deg); }
+  }
+  @keyframes driftOrb2{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(-16vw, -12vh, 0) scale(1.15) rotate(-60deg); }
+    100%{ transform:translate3d(-26vw, 14vh, 0) scale(1.05) rotate(-120deg); }
+  }
+  @keyframes driftOrb3{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(18vw, -15vh, 0) scale(1.22) rotate(70deg); }
+    100%{ transform:translate3d(8vw, -24vh, 0) scale(0.95) rotate(140deg); }
+  }
+  @keyframes driftOrb4{
+    0%{ transform:translate3d(0, 0, 0) scale(1); }
+    50%{ transform:translate3d(18vw, 12vh, 0) scale(1.16); }
+    100%{ transform:translate3d(8vw, -16vh, 0) scale(0.9); }
+  }
+  @keyframes driftOrb5{
+    0%{ transform:translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    50%{ transform:translate3d(-18vw, 20vh, 0) scale(1.2) rotate(-50deg); }
+    100%{ transform:translate3d(-8vw, 32vh, 0) scale(0.94) rotate(-100deg); }
   }
 
   /* ========================================================
@@ -390,7 +405,7 @@
   }
 
   /* ========================================================
-     FEATURE STRIP (FROSTED GLASS ON MOVING COLORS)
+     FEATURE STRIP
      ======================================================== */
   .strip{
     background:rgba(255, 255, 255, 0.45);
@@ -408,7 +423,7 @@
   @media(max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr;row-gap:26px}.st:nth-child(3){border-left:none}}
 
   /* ========================================================
-     FIND YOUR PERSON SECTION
+     FIND YOUR PERSON SECTION (EXACT RESTORED)
      ======================================================== */
   .find{
     padding-bottom:0;
@@ -586,7 +601,7 @@
 </head>
 <body>
 
-<!-- LIVING ANIMATED MULTICOLOR AURORA BACKGROUND -->
+<!-- LIVING ANIMATED MULTICOLOR AURORA BACKGROUND (MAIN PAGE) -->
 <div class="living-bg" aria-hidden="true">
   <div class="aurora-orb orb-1"></div>
   <div class="aurora-orb orb-2"></div>
@@ -595,8 +610,11 @@
   <div class="aurora-orb orb-5"></div>
 </div>
 
-<!-- CHOREOGRAPHED INTRO -->
+<!-- CHOREOGRAPHED INTRO (RESTORED COUPLE PHOTO & AMBER HALO) -->
 <div id="splash" aria-hidden="true" onclick="dismissSplash()">
+  <!-- Couple photo restored to opening screen -->
+  <div class="splash-bg-photo"></div>
+  <div class="splash-overlay"></div>
   <div class="splash-amber-halo"></div>
 
   <div class="splash-content">
@@ -629,7 +647,7 @@
 </header>
 
 <main id="top">
-  <!-- 1. HERO SECTION (LIVING COLORS - NO PHOTO) -->
+  <!-- 1. HERO SECTION -->
   <section class="hero">
     <div class="wrap hero-inner">
       <div class="logo-xl">YARN</div>
@@ -759,7 +777,7 @@
     <div class="wrap center">
       <div class="eyebrow">Trust You Can See</div>
       <h2>Verified profiles. Zero catfishes.</h2>
-      <p class="lead">Badges are awarded only after strict verification. Your personal IDs and private documents remain 100% confidential and are never shared with anyone.</p>
+      <p class="lead">Each badge shows one specific check that was actually completed. Badges are never given for claims alone, and your documents are never shown to other members.</p>
       
       <div class="badges">
         <span class="badge">Identity Verified</span>
