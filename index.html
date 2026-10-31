@@ -48,15 +48,15 @@
   a{color:inherit;text-decoration:none}
   h1,h2,h3,h4{font-family:var(--font-authority);font-weight:800;line-height:1.15;color:var(--text-primary)}
   .wrap{width:min(1140px,92%);margin:0 auto}
-  section{padding:90px 0;position:relative}
+  section{padding:80px 0;position:relative}
   .eyebrow{color:var(--orange);letter-spacing:.28em;font-size:.78rem;text-transform:uppercase;margin-bottom:14px;font-weight:700;display:inline-block}
-  h2{font-size:clamp(2.2rem,5.5vw,3.4rem);margin-bottom:16px}
+  h2{font-size:clamp(2.1rem,5vw,3.2rem);margin-bottom:16px}
   .lead{color:var(--muted);max-width:580px;font-size:1.06rem;line-height:1.7}
   .center{text-align:center}.center .lead{margin:0 auto}
   svg.i{width:24px;height:24px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
   /* ========================================================
-     CHOREOGRAPHED INTRO (SLOW-MO ZOOM & INSTANT HANDOVER)
+     CHOREOGRAPHED INTRO
      ======================================================== */
   #splash{
     position:fixed;inset:0;z-index:999;
@@ -236,7 +236,7 @@
   /* Buttons */
   .btn{
     display:inline-flex;gap:10px;align-items:center;justify-content:center;
-    padding:16px 40px;border-radius:50px;font-weight:600;font-size:1.05rem;
+    padding:16px 38px;border-radius:50px;font-weight:600;font-size:1.02rem;
     cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;font-family:var(--sans);
   }
   .btn-gold{
@@ -267,14 +267,14 @@
   @keyframes btnSpectrumFlow{ 0%{background-position:0% 50%} 100%{background-position:100% 50%} }
 
   /* ========================================================
-     HERO SECTION
+     HERO SECTION (CLEAN & OPEN - NO OVERLAPPING CARDS)
      ======================================================== */
   .hero{
     position:relative;
-    min-height:100svh;
+    min-height:92svh;
     display:flex;
     align-items:center;
-    padding:120px 0 85px;
+    padding:130px 0 80px;
     overflow:hidden;
     background:#FFF8F2;
   }
@@ -285,7 +285,7 @@
     background-color:#EFE2D6;
     background-image:url('opening-couple.jpg'), url('images/opening-couple.jpg');
     background-size:cover;
-    background-position:center 10%;
+    background-position:center 12%;
     background-repeat:no-repeat;
     filter:blur(1px) brightness(0.98) saturate(1.15);
     opacity:0.88;
@@ -297,9 +297,9 @@
     inset:0;
     background:linear-gradient(
       180deg,
-      rgba(255, 248, 242, 0.25) 0%,
-      rgba(255, 248, 242, 0.15) 30%,
-      rgba(255, 241, 230, 0.65) 70%,
+      rgba(255, 248, 242, 0.3) 0%,
+      rgba(255, 248, 242, 0.18) 30%,
+      rgba(255, 241, 230, 0.72) 75%,
       #FFF1E6 100%
     );
     z-index:2;
@@ -315,19 +315,16 @@
     z-index:2;
   }
 
-  .hero-inner{position:relative;z-index:3}
-
-  .hero-grid{
-    display:grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap:50px;
-    align-items:center;
+  .hero-inner{
+    position:relative;
+    z-index:3;
+    max-width:620px;
   }
 
   .logo-xl{
     font-family:var(--font-authority);
     font-weight:900;
-    font-size:clamp(5.4rem,17vw,9.5rem);
+    font-size:clamp(5.2rem,17vw,9.5rem);
     line-height:.88;
     background:var(--spectrum);
     background-size:300% 100%;
@@ -344,7 +341,7 @@
     font-weight:700;
     font-size:clamp(.95rem,2.8vw,1.3rem);
     color:var(--orange-warm);
-    margin:14px 0 32px;
+    margin:14px 0 30px;
     padding-left:.32em;
     text-transform:uppercase;
     text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
@@ -361,7 +358,7 @@
   .hero p.lead{
     margin-bottom:34px;
     font-size:1.08rem;
-    max-width:480px;
+    max-width:520px;
     color:var(--muted);
     text-shadow: 0 1px 8px rgba(255, 255, 255, 0.8);
   }
@@ -372,38 +369,9 @@
   .avatar-cluster img{width:34px;height:34px;border-radius:50%;border:2px solid #FFFFFF;margin-left:-8px;object-fit:cover}
   .avatar-cluster img:first-child{margin-left:0}
 
-  /* Floating Profile Mockups on Hero */
-  .hero-visual{position:relative;height:500px;display:flex;justify-content:center;align-items:center}
-  .pcards{position:relative;width:100%;height:100%}
-  .pc{
-    position:absolute;border-radius:24px;overflow:hidden;
-    border:1px solid rgba(255,255,255,.9);
-    box-shadow:0 24px 60px rgba(130, 40, 90, 0.12);
-    background:#FFFFFF;
-  }
-  .pc .ph{position:absolute;inset:0;background-size:cover;background-position:center top}
-  .pc::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 42%,rgba(28,14,24,.92))}
-  .pc .info{position:absolute;left:16px;right:16px;bottom:16px;z-index:2;color:#FFFFFF}
-  .pc1{width:min(270px,58%);height:420px;left:2%;top:10px;transform:rotate(-3deg);animation:fl1 7s ease-in-out infinite}
-  .pc2{width:min(240px,52%);height:390px;right:0;top:70px;transform:rotate(4deg);animation:fl2 8s ease-in-out infinite}
-  .pc1 .ph{background-color:#E8D8CC;background-image:radial-gradient(circle at 50% 25%, #FFD6B8, #B0927C)}
-  .pc2 .ph{background-color:#E0D0C4;background-image:radial-gradient(circle at 50% 25%, #FFCBA4, #8F7666)}
-  .pc .nm{font-size:1.1rem;font-weight:600}
-  .tick{display:inline-flex;width:16px;height:16px;border-radius:50%;background:#FF5A00;color:#FFF;font-size:.65rem;font-weight:800;align-items:center;justify-content:center;margin-left:4px;vertical-align:middle}
-  .pc .meta{font-size:.78rem;color:rgba(255,255,255,.85);margin:2px 0 8px}
-  .tags{display:flex;gap:6px;flex-wrap:wrap}
-  .tags i{font-style:normal;font-size:.7rem;border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:3px 10px;background:rgba(0,0,0,.35);color:#FFFFFF}
-  .acts{display:flex;justify-content:center;gap:12px;margin-top:12px}
-  .acts i{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:.9rem;color:#FFFFFF;cursor:pointer}
-  .acts i.big{width:44px;height:44px;background:var(--spectrum);background-size:200% 100%;color:#FFF;border:none;box-shadow:0 6px 18px rgba(255,90,0,.45)}
-
-  @keyframes fl1{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-10px)}}
-  @keyframes fl2{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(3deg) translateY(-14px)}}
-
   @media(max-width:900px){
-    .hero{padding-top:130px;align-items:flex-start}
-    .hero-grid{grid-template-columns:1fr;gap:40px}
-    .hero-photo{opacity:0.86;background-position:center 6%;}
+    .hero{padding-top:120px;padding-bottom:60px;min-height:auto}
+    .hero-photo{background-position:center 4%;opacity:0.86}
   }
 
   /* ========================================================
@@ -423,15 +391,15 @@
   @media(max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr;row-gap:26px}.st:nth-child(3){border-left:none}}
 
   /* ========================================================
-     FIND YOUR PERSON SECTION (EXACTLY AS SCREENSHOT)
+     FIND YOUR PERSON SECTION (EXACT LAYOUT + CARDS)
      ======================================================== */
   .find{
     background:linear-gradient(180deg, #FFEBE0 0%, #FDEBF4 50%, #F8E7F8 100%);
     padding-bottom:0;
     overflow:hidden;
   }
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-  @media(max-width:860px){.split{grid-template-columns:1fr}}
+  .split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:45px;align-items:center}
+  @media(max-width:860px){.split{grid-template-columns:1fr;gap:35px}}
 
   .feat{display:flex;gap:16px;align-items:flex-start;margin-top:24px}
   .feat svg.i{flex-shrink:0;margin-top:2px}
@@ -444,7 +412,7 @@
     font-size:clamp(2.3rem, 5.8vw, 3.4rem);
     color:var(--orange);
     line-height:1.15;
-    margin-top:42px;
+    margin-top:40px;
   }
   .small{
     letter-spacing:.24em;
@@ -455,8 +423,80 @@
     font-weight:700;
   }
 
+  /* Profile Cards in Find section */
+  .pcards{
+    position:relative;
+    height:460px;
+    margin:20px 0;
+  }
+  .pc{
+    position:absolute;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.95);
+    box-shadow:0 24px 60px rgba(130, 40, 90, 0.16);
+    background:#FFFFFF;
+  }
+  .pc .ph{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center top;
+  }
+  .pc::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent 38%, rgba(20, 10, 5, 0.92) 86%);
+    z-index:1;
+  }
+  .pc .info{
+    position:absolute;
+    left:16px;
+    right:16px;
+    bottom:16px;
+    z-index:2;
+    color:#FFFFFF;
+  }
+  .pc1{
+    width:min(280px, 60%);
+    height:410px;
+    left:2%;
+    top:10px;
+    transform:rotate(-3deg);
+    animation:fl1 7s ease-in-out infinite;
+  }
+  .pc2{
+    width:min(250px, 54%);
+    height:380px;
+    right:2%;
+    top:65px;
+    transform:rotate(4deg);
+    animation:fl2 8s ease-in-out infinite;
+  }
+  
+  /* Fallback to stunning Unsplash portraits so cards never appear blank */
+  .pc1 .ph{
+    background-image:url('images/amara.jpg'), url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80');
+  }
+  .pc2 .ph{
+    background-image:url('images/daniel.jpg'), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80');
+  }
+
+  .pc .nm{font-size:1.15rem;font-weight:700}
+  .tick{display:inline-flex;width:16px;height:16px;border-radius:50%;background:#FF5A00;color:#FFF;font-size:.65rem;font-weight:800;align-items:center;justify-content:center;margin-left:4px;vertical-align:middle}
+  .pc .meta{font-size:.78rem;color:rgba(255,255,255,.85);margin:3px 0 10px}
+  .tags{display:flex;gap:6px;flex-wrap:wrap}
+  .tags i{font-style:normal;font-size:.7rem;border:1px solid rgba(255,255,255,.3);border-radius:50px;padding:3px 10px;background:rgba(0,0,0,.35);color:#FFFFFF}
+  .acts{display:flex;justify-content:center;gap:12px;margin-top:14px}
+  .acts i{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:.9rem;color:#FFFFFF;cursor:pointer}
+  .acts i.big{width:44px;height:44px;background:var(--spectrum);background-size:200% 100%;color:#FFF;border:none;box-shadow:0 6px 18px rgba(255,90,0,.45)}
+
+  @keyframes fl1{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-10px)}}
+  @keyframes fl2{0%,100%{transform:rotate(4deg) translateY(0)}50%{transform:rotate(3deg) translateY(-14px)}}
+
   /* Skyline */
-  .skyline{display:block;width:100%;height:clamp(180px,30vw,320px);margin-top:40px}
+  .skyline{display:block;width:100%;height:clamp(160px,28vw,300px);margin-top:30px}
   .disco-fast{ animation: discoBeat 0.9s infinite alternate cubic-bezier(.4, 0, .2, 1); }
   @keyframes discoBeat{ 0%{ opacity: 0.15; } 100%{ opacity: 1; filter: drop-shadow(0 0 8px currentColor); } }
 
@@ -554,8 +594,8 @@
       <a href="#top" class="on">Home</a>
       <a href="#find">Discover</a>
       <a href="#how">About</a>
-      <a href="#" onclick="soon('Stories');return false;">Stories</a>
       <a href="#safety">Safety</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <div class="right">
       <button class="pill" onclick="soon('Sign-up')">Sign Up</button>
@@ -565,56 +605,29 @@
 </header>
 
 <main id="top">
-  <!-- 1. HERO SECTION WITH CLEAR VISIBLE COUPLE -->
+  <!-- 1. HERO SECTION (CLEAN - NO DUPLICATE OVERLAPPING CARDS) -->
   <section class="hero">
     <div class="hero-photo" role="img" aria-label="A happy couple sharing an intentional moment"></div>
     <div class="hero-vignette"></div>
 
     <div class="wrap hero-inner">
-      <div class="hero-grid">
-        <div>
-          <div class="logo-xl">YARN</div>
-          <div class="tagline">Meet with Intention.</div>
-          <h1>More than a match.<br>A meaningful possibility.</h1>
-          <p class="lead">Dating designed for intentional people. Connect through shared life goals, verified identities, and conversations that actually lead to memorable dates.</p>
-          
-          <div class="hero-cta-group">
-            <button class="btn btn-gold" onclick="soon('Sign-up')">Let's YARN <span>→</span></button>
-            <a href="#how" class="btn btn-outline">Explore How It Works</a>
-          </div>
+      <div class="logo-xl">YARN</div>
+      <div class="tagline">Meet with Intention.</div>
+      <h1>More than a match.<br>A meaningful possibility.</h1>
+      <p class="lead">Dating designed for intentional people. Connect through shared life goals, verified identities, and conversations that actually lead to memorable dates.</p>
+      
+      <div class="hero-cta-group">
+        <button class="btn btn-gold" onclick="soon('Sign-up')">Let's YARN <span>→</span></button>
+        <a href="#how" class="btn btn-outline">Explore How It Works</a>
+      </div>
 
-          <div class="trust-proof">
-            <div class="avatar-cluster">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Member avatar">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Member avatar">
-              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Member avatar">
-            </div>
-            <span>Curated community of ambitious, genuine daters.</span>
-          </div>
+      <div class="trust-proof">
+        <div class="avatar-cluster">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Member avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Member avatar">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Member avatar">
         </div>
-
-        <div class="hero-visual">
-          <div class="pcards">
-            <div class="pc pc1">
-              <div class="ph"></div>
-              <div class="info">
-                <div class="nm">Amara, 24 <span class="tick">✓</span></div>
-                <div class="meta">Lagos &nbsp;|&nbsp; Marketing Executive</div>
-                <div class="tags"><i>Ambitious</i><i>Travel</i><i>Fine Dining</i></div>
-                <div class="acts" aria-hidden="true"><i>✕</i><i class="big">♥</i><i>★</i></div>
-              </div>
-            </div>
-            <div class="pc pc2">
-              <div class="ph"></div>
-              <div class="info">
-                <div class="nm">Daniel, 29 <span class="tick">✓</span></div>
-                <div class="meta">Lagos &nbsp;|&nbsp; Tech Founder</div>
-                <div class="tags"><i>Fitness</i><i>Architecture</i><i>Growth</i></div>
-                <div class="acts" aria-hidden="true"><i>✕</i><i class="big">♥</i><i>★</i></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <span>Curated community of ambitious, genuine daters.</span>
       </div>
     </div>
   </section>
@@ -629,7 +642,7 @@
     </div>
   </div>
 
-  <!-- 3. FIND YOUR PERSON (EXACT SECTION RESTORED) -->
+  <!-- 3. FIND YOUR PERSON (EXACT SECTION RESTORED WITH WORKING CARDS) -->
   <section class="find" id="find">
     <div class="wrap split">
       <div>
@@ -656,6 +669,7 @@
         <div class="small">YARN — MEET WITH INTENTION.</div>
       </div>
 
+      <!-- Working Sample Profile Cards -->
       <div>
         <div class="pcards">
           <div class="pc pc1">
@@ -671,8 +685,8 @@
             <div class="ph"></div>
             <div class="info">
               <div class="nm">Daniel, 29 <span class="tick">✓</span></div>
-              <div class="meta">Lagos &nbsp;|&nbsp; Business Owner</div>
-              <div class="tags"><i>Travel</i><i>Fitness</i><i>Growth</i></div>
+              <div class="meta">Lagos &nbsp;|&nbsp; Tech Founder</div>
+              <div class="tags"><i>Fitness</i><i>Architecture</i><i>Growth</i></div>
               <div class="acts" aria-hidden="true"><i>✕</i><i class="big">♥</i><i>★</i></div>
             </div>
           </div>
@@ -866,7 +880,6 @@
 </footer>
 
 <script>
-  // Centre the Y dynamically for the smooth zoom on any phone screen
   function centreY() {
     const splash = document.getElementById('splash');
     const slot = document.querySelector('.y-slot');
@@ -885,12 +898,9 @@
   // 3 TYPEWRITER-STYLE SHORT HAPTIC VIBRATIONS AS "ARN" WRITES ON DISPLAY
   function triggerWritingHaptics() {
     if ("vibrate" in navigator) {
-      // 3 short, typewriter-like taps: [vibrate, pause, vibrate, pause, vibrate]
       navigator.vibrate([35, 55, 35, 55, 35]);
     }
   }
-
-  // Fires right when "ARN" slides out beside the "Y" (~1.2s into opening)
   setTimeout(triggerWritingHaptics, 1250);
 
   function dismissSplash() {
@@ -912,7 +922,6 @@
     alert(feature + " feature coming soon! YARN is actively in development.");
   }
 
-  // Skyline Generator
   (function buildCitySkyline() {
     const cityg = document.getElementById('cityg');
     if (!cityg) return;
